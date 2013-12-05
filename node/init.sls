@@ -26,7 +26,7 @@ get-node:
     - names:
       - tar -zxvf node-v{{ version }}.tar.gz
     - watch:
-      - file: node-{{ version }}
+      - file: /usr/src/node-v{{ version }}.tar.gz
 
 make-node:
   cmd.wait:
