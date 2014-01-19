@@ -1,6 +1,7 @@
 {% set node = pillar.get('node', {}) -%}
 {% set version = node.get('version', '0.8.20') -%}
 {% set checksum = node.get('checksum', 'b780f58f0e3bc43d2380d4a935f2b45350783b37') -%}
+{% set make_jobs = node.get('make_jobs', '1') -%}
 git_packages:
   pkg.installed:
     - names:
@@ -33,7 +34,7 @@ make-node:
     - cwd: /usr/src/node-v{{ version }}
     - names:
       - ./configure
-      - make
+      - make --jobs={{ make_jobs }}
       - checkinstall --install=yes --pkgname=nodejs --pkgversion "{{ version }}" --default
     - watch:
       - cmd: get-node
