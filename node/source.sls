@@ -2,6 +2,18 @@
 {% set version = node.get('version', '0.8.20') -%}
 {% set checksum = node.get('checksum', 'b780f58f0e3bc43d2380d4a935f2b45350783b37') -%}
 {% set make_jobs = node.get('make_jobs', '1') -%}
+
+{% if grains['os_family'] == 'RedHat' %}
+git_packages:
+  pkg.installed:
+    - names:
+      - git
+      - gcc-c++
+      - make
+      - openssl-devel
+{% endif %}
+
+{% if grains['os_family'] == 'Debian' %}
 git_packages:
   pkg.installed:
     - names:
@@ -13,6 +25,7 @@ git_packages:
       - gcc
       - g++
       - checkinstall
+{% endif %}
 
 ## Get Node
 get-node:
@@ -33,10 +46,6 @@ make-node:
   cmd.wait:
     - cwd: /usr/src/node-v{{ version }}
     - names:
-      - ./configure
-      - make --jobs={{ make_jobs }}
-      - checkinstall --install=yes --pkgname=nodejs --pkgversion "{{ version }}" --default
+      - ./configure && make && make install 
     - watch:
       - cmd: get-node
-
-{% include 'node/source_npm.sls' %}
