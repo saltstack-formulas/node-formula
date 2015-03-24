@@ -46,6 +46,12 @@ make-node:
   cmd.wait:
     - cwd: /usr/src/node-v{{ version }}
     - names:
-      - ./configure && make && make install 
+      - ./configure && make && make install
     - watch:
       - cmd: get-node
+
+/usr/bin/node:
+  file.symlink:
+    - target: /usr/local/bin/node
+    - require:
+      - cmd: make-node
