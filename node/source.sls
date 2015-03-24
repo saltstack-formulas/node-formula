@@ -55,3 +55,9 @@ make-node:
     - target: /usr/local/bin/node
     - require:
       - cmd: make-node
+
+/usr/bin/npm:
+  file.symlink:
+    - target: /usr/local/bin/npm
+    - require:
+      - cmd: make-node
