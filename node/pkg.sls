@@ -2,12 +2,15 @@
 
 {%- if grains['os'] == 'Ubuntu' and salt['pillar.get']('node:install_from_ppa') %}
 nodejs.ppa:
+  cmd.run:
+    - name: curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+
   pkgrepo.managed:
-    - humanname: node.js PPA
-    - name: deb http://ppa.launchpad.net/chris-lea/node.js/ubuntu {{ grains['oscodename'] }} main
+    - humanname: NodeSource Node.js Repository
+    - name: deb https://deb.nodesource.com/node_0.12 {{ grains['oscodename'] }} main
     - dist: {{ grains['oscodename'] }}
-    - file: /etc/apt/sources.list.d/nodejs.list
-    - keyid: "C7917B12"
+    - file: /etc/apt/sources.list.d/nodesource.list
+    - keyid: "68576280"
     - keyserver: keyserver.ubuntu.com
     - require_in:
       pkg: nodejs
