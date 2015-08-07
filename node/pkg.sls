@@ -23,6 +23,7 @@ npm:
 {%- else %}
   pkg.installed:
     - name: {{ node.npm_pkg }}
+    - reload_modules: true
     - require:
       - pkg: nodejs
 {%- endif %}
@@ -30,3 +31,4 @@ npm:
 nodejs:
   pkg.installed:
     - name: {{ node.node_pkg }}
+    - reload_modules: true
