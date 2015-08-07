@@ -2,6 +2,10 @@
 
 {%- if grains['os'] == 'Ubuntu' and salt['pillar.get']('node:install_from_ppa') %}
 nodejs.ppa:
+  pkg.installed:
+    - name: apt-transport-https
+    - require_in:
+      - pkgrepo: nodejs.ppa
   pkgrepo.managed:
     - humanname: NodeSource Node.js Repository
     - name: deb https://deb.nodesource.com/node_0.12 {{ grains['oscodename'] }} main
