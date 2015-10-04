@@ -3,3 +3,5 @@ node:
   checksum: d7c6a39dfa714eae1f8da7a00c9a07efd74a03b3
   make_jobs: 2
   # install_from_ppa: True
+  # ppa:
+  #   repository_url: https://deb.nodesource.com/node_4.x
