@@ -5,3 +5,4 @@ include:
 {%- else %}
   - .pkg
 {%- endif %}
+  - .config

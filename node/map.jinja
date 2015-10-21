@@ -1,8 +1,20 @@
 {% set pillar_get = salt['pillar.get'] -%}
 
-{% set npm_prefix = pillar_get('npm:prefix', '/usr/local') %}
+{% if pillar_get('node:install_from_source') %}
+{% set default_npm_prefix = '/usr/local' %}
+{% else %}
+{% set default_npm_prefix = '/usr' %}
+{% endif %}
+{% set npm_prefix = pillar_get('npm:prefix', default_npm_prefix) %}
 {% set npm_bin = '{0}/bin/npm'.format(npm_prefix) %}
 {% set npm_src_requirement = 'file: {0}'.format(npm_bin) %}
+
+{% if npm_prefix == '/usr' %}
+{% set npmrc_prefix = '' %}
+{% else %}
+{% set npmrc_prefix = npm_prefix %}
+{% endif %}
+{% set npmrc = '{0}/etc/npmrc'.format(npmrc_prefix) %}
 
 {% set npm_requirement = 'pkg: npm' %}
 
