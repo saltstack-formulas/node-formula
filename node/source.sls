@@ -1,6 +1,6 @@
 {% set node = pillar.get('node', {}) -%}
-{% set version = node.get('version', '0.8.20') -%}
-{% set checksum = node.get('checksum', 'b780f58f0e3bc43d2380d4a935f2b45350783b37') -%}
+{% set version = node.get('version', '5.1.0') -%}
+{% set checksum = node.get('checksum', '25b2d3b7dd57fe47a483539fea240a3c6bbbdab4d89a45a812134cf1380ecb94') -%}
 {% set make_jobs = node.get('make_jobs', '1') -%}
 git_packages:
   pkg.installed:
@@ -19,7 +19,7 @@ get-node:
   file.managed:
     - name: /usr/src/node-v{{ version }}.tar.gz
     - source: http://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
-    - source_hash: sha1={{ checksum }}
+    - source_hash: sha256={{ checksum }}
     - require:
       - pkg: git_packages
   cmd.wait:
@@ -29,14 +29,20 @@ get-node:
     - watch:
       - file: /usr/src/node-v{{ version }}.tar.gz
 
-make-node:
-  cmd.wait:
+configure-node:
+  cmd.run:
+    #- unless: which node
     - cwd: /usr/src/node-v{{ version }}
-    - names:
-      - ./configure
-      - make --jobs={{ make_jobs }}
-      - checkinstall --install=yes --pkgname=nodejs --pkgversion "{{ version }}" --default
-    - watch:
-      - cmd: get-node
+    - ignore_timeout: True
+    - name: ./configure
 
-{% include 'node/source_npm.sls' %}
+make-node:
+  cmd.run:
+    - cwd: /usr/src/node-v{{ version }}
+    - name: make --jobs={{ make_jobs }}
+
+install-node:
+  cmd.run:
+    - cwd: /usr/src/node-v{{ version }}
+    - name: checkinstall --install=yes --pkgname=node --pkgversion "{{ version }}" --default
+
