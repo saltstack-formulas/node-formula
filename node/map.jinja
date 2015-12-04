@@ -27,7 +27,7 @@
 {% set node = salt['grains.filter_by']({
     'Debian': {
         'node_pkg': 'nodejs' if grains['osrelease']|float < 8 else 'nodejs-legacy',
-        'npm_pkg': 'npm',
+        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
     },
     'Ubuntu': {
         'node_pkg': 'nodejs',
