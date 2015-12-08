@@ -2,7 +2,15 @@
 {% set version = node.get('version', '5.1.0') -%}
 {% set checksum = node.get('checksum', '25b2d3b7dd57fe47a483539fea240a3c6bbbdab4d89a45a812134cf1380ecb94') -%}
 {% set make_jobs = node.get('make_jobs', '1') -%}
-git_packages:
+
+# Get the node.js version to find out if we have to install it again.
+# Checkinstall appends -1 as revision number, so remove it if found.
+{% set nodeVersion = salt['pkg.version']('node')|replace('-1', '') -%}
+
+
+{% if nodeVersion != version %}
+
+Ensure required packages are present:
   pkg.installed:
     - names:
       - libssl-dev
@@ -14,35 +22,56 @@ git_packages:
       - g++
       - checkinstall
 
-## Get Node
-get-node:
+Download node sources:
   file.managed:
     - name: /usr/src/node-v{{ version }}.tar.gz
     - source: http://nodejs.org/dist/v{{ version }}/node-v{{ version }}.tar.gz
     - source_hash: sha256={{ checksum }}
     - require:
-      - pkg: git_packages
-  cmd.wait:
+      - pkg: Ensure required packages are present
+  event.send:
+    - data:
+      status: 'Sources downloaded'
+
+Extract sources:
+  cmd.run:
     - cwd: /usr/src
-    - names:
-      - tar -zxvf node-v{{ version }}.tar.gz
-    - watch:
-      - file: /usr/src/node-v{{ version }}.tar.gz
+    - name: tar -zxvf node-v{{ version }}.tar.gz
+    - require:
+      - file: Download node sources
+  event.send:
+    - data:
+      status: 'Sources extracted'
 
 configure-node:
   cmd.run:
-    #- unless: which node
     - cwd: /usr/src/node-v{{ version }}
     - ignore_timeout: True
     - name: ./configure
+  event.send:
+    - data:
+      status: 'Sources configured, building now (this will take some minutes)'
 
 make-node:
   cmd.run:
     - cwd: /usr/src/node-v{{ version }}
     - name: make --jobs={{ make_jobs }}
+  event.send:
+    - data:
+      status: 'Sources built. Installing ...'
 
 install-node:
   cmd.run:
     - cwd: /usr/src/node-v{{ version }}
     - name: checkinstall --install=yes --pkgname=node --pkgversion "{{ version }}" --default
+    - onchanges:
+      - cmd: make-node
 
+{% else %}
+
+Already installed:
+  event.send:
+    - data:
+      status: 'Node.js {{ version }} is already installed.'
+
+{% endif %}
