@@ -11,7 +11,7 @@ An example pillar file looks as follows:
       checksum: 25b2d3b7dd57fe47a483539fea240a3c6bbbdab4d89a45a812134cf1380ecb94
       make_jobs: 2
 
-Available versions can be found on (nodejs.org/dist/)[https://nodejs.org/dist/]; the checksums are listed in the
+Available versions can be found on [nodejs.org/dist/](https://nodejs.org/dist/); the checksums are listed in the
 file `SHASUMS256.txt` in the respective version’s directory.
 
 ### Older versions
@@ -25,4 +25,4 @@ of this formula.
 
 ## Installing from packages
 
-See the (example pillar file)[https://github.com/saltstack-formulas/node-formula/blob/master/pillar.example].
+See the [example pillar file](https://github.com/saltstack-formulas/node-formula/blob/master/pillar.example).
