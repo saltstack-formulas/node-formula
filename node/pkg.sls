@@ -1,6 +1,6 @@
 {%- from "node/map.jinja" import node, npm_bin with context %}
 
-{%- if grains['os'] == 'Ubuntu' or grains['os'] == 'Debian' and salt['pillar.get']('node:install_from_ppa') %}
+{%- if grains['os'] in ['Ubuntu', 'Debian'] and salt['pillar.get']('node:install_from_ppa') %}
 nodejs.ppa:
   pkg.installed:
     - name: apt-transport-https
