@@ -29,9 +29,6 @@ Download node sources:
     - source_hash: sha256={{ checksum }}
     - require:
       - pkg: Ensure required packages are present
-  event.send:
-    - data:
-      status: 'Sources downloaded'
 
 Extract sources:
   cmd.run:
@@ -39,26 +36,17 @@ Extract sources:
     - name: tar -zxvf node-v{{ version }}.tar.gz
     - require:
       - file: Download node sources
-  event.send:
-    - data:
-      status: 'Sources extracted'
 
 configure-node:
   cmd.run:
     - cwd: /usr/src/node-v{{ version }}
     - ignore_timeout: True
     - name: ./configure
-  event.send:
-    - data:
-      status: 'Sources configured, building now (this will take some minutes)'
 
 make-node:
   cmd.run:
     - cwd: /usr/src/node-v{{ version }}
     - name: make --jobs={{ make_jobs }}
-  event.send:
-    - data:
-      status: 'Sources built. Installing ...'
 
 install-node:
   cmd.run:
@@ -66,12 +54,5 @@ install-node:
     - name: checkinstall --install=yes --pkgname=node --pkgversion "{{ version }}" --default
     - onchanges:
       - cmd: make-node
-
-{% else %}
-
-Already installed:
-  event.send:
-    - data:
-      status: 'Node.js {{ version }} is already installed.'
 
 {% endif %}
