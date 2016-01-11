@@ -7,12 +7,24 @@ This formula installs [node.js](https://nodejs.org/en/).
 An example pillar file looks as follows:
 
     node:
-      version: 5.1.0
-      checksum: 25b2d3b7dd57fe47a483539fea240a3c6bbbdab4d89a45a812134cf1380ecb94
+      version: 5.4.0
+      checksum: 1dfe37a00cf0ed62beb73071f571ac56697f544a98cc2ff3318faec6363d72ab
       make_jobs: 2
+      install_from_source: True
 
 Available versions can be found on [nodejs.org/dist/](https://nodejs.org/dist/); the checksums are listed in the
-file `SHASUMS256.txt` in the respective version’s directory.
+file `SHASUMS256.txt` in the respective version’s directory. The *node-v….tar.gz* checksum is used.
+
+## Installing binary packages
+
+On Linux, the binary node.js distribution can be installed to `/usr/local/share/` with the following pillar file:
+
+    node:
+      version: 5.4.0
+      checksum: f037e2734f52b9de63e6d4a4e80756477b843e6f106e0be05591a16b71ec2bd0
+      install_from_binary: True
+
+The checksum for the *node-v…-linux-x64.tar.gz* file has to be provided.
 
 ### Older versions
 
