@@ -17,6 +17,10 @@
 {% set npmrc = '{0}/etc/npmrc'.format(npmrc_prefix) %}
 
 {% set node = salt['grains.filter_by']({
+    'CentOS': {
+        'node_pkg': 'nodejs',
+        'npm_pkg': 'npm',
+    },
     'Debian': {
         'node_pkg': 'nodejs' if grains['osrelease']|float < 8 or pillar_get('node:install_from_ppa') else 'nodejs-legacy',
         'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
