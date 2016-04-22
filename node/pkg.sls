@@ -22,5 +22,5 @@ nodejs:
     - name: {{ node.node_pkg }}
     - reload_modules: true
 {%- if salt['pillar.get']('node:version') %}
-    - version: {{ node.version }}
+    - version: {{ salt['pillar.get']('node:version') }}
 {%- endif %}
