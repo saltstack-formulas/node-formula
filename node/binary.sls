@@ -8,6 +8,13 @@
 {% endif -%}
 {% set pkgname = 'node-v' ~ version ~ '-linux-' ~ arch -%}
 {% set format = node.get('format', 'gz') -%}
+{% if format == 'xz' -%}
+{% set tar_options = 'J' -%}
+{% elif format == 'bz2' -%}
+{% set tar_options = 'j' -%}
+{% else -%}
+{% set tar_options = 'z' -%}
+{% endif -%}
 
 Extract binary package:
   archive.extracted:
@@ -15,6 +22,7 @@ Extract binary package:
     - source: https://nodejs.org/dist/v{{ version }}/{{ pkgname }}.tar.{{ format }}
     - source_hash: {{ checksum }}
     - archive_format: tar
+    - tar_options: {{ tar_options }}
     - if_missing: /usr/local/src/{{ pkgname }}
 
 Copy lib:
