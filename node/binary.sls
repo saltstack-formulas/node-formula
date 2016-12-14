@@ -15,9 +15,26 @@ Extract binary package:
     - source: /usr/local/src/{{ pkgname }}.tar.gz
     - archive_format: tar
     - if_missing: /usr/local/src/{{ pkgname }}
+    - require:
+      - file: Get binary package
+
+Remove existing include directory:
+  file.absent:
+    - name: /usr/local/include/node
+    - unless: cmp /usr/local/bin/node /usr/local/src/{{ pkgname }}/bin/node
+    - require:
+      - archive: Extract binary package
+
+Remove existing npm:
+  file.absent:
+    - name: /usr/local/lib/node_modules/npm
+    - onchanges:
+      - file: Remove existing include directory
 
 Copy lib:
   cmd.run:
     - cwd: /usr/local/src/{{ pkgname }}/
     - name: cp -r bin/ include/ lib/ share/ /usr/local/
-    - unless: cmp /usr/local/bin/node /usr/local/src/{{ pkgname }}/bin/node
+    - unless:
+      - cmp /usr/local/bin/node /usr/local/src/{{ pkgname }}/bin/node
+      - npm --version
