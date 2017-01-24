@@ -31,7 +31,7 @@
     },
 }, grain='os', merge=pillar_get('node:lookup')) %}
 
-{% if pillar_get('node:install_from_source') or (grains['os'] == 'Debian' and grains['osrelease']|float < 8 and not pillar_get('node:install_from_ppa')) %}
+{% if pillar_get('node:install_from_source') or (grains['os_family'] == 'Debian' and grains['osrelease']|float < 8 and not pillar_get('node:install_from_ppa')) %}
   {% set npm_requirement = npm_src_requirement %}
 {% else %}
   {% set npm_requirement = 'pkg: {0}'.format(node['npm_pkg']) %}

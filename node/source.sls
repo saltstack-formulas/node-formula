@@ -16,7 +16,7 @@ Ensure required packages are present:
   pkg.installed:
     - names: {{ from_src_requirements.pkgs|json }}
 
-{% if grains['os'] in ['RedHat', 'CentOS'] %}
+{% if grains['os_family'] in ['RedHat', 'CentOS'] %}
 Alternative checkinstall requirement:
   pkg.installed:
     - pkgs:
@@ -54,7 +54,7 @@ make-node:
     - cwd: /usr/src/node-v{{ version }}
     - name: make --jobs={{ make_jobs }}
 
-{% if grains['os'] in ['RedHat', 'CentOS'] %}
+{% if grains['os_family'] in ['RedHat', 'CentOS'] %}
 make-install-node:
   cmd.run:
     - cwd: /usr/src/node-v{{ version }}
