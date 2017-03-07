@@ -2,6 +2,16 @@
 
 This formula installs [node.js](https://nodejs.org/en/).
 
+## Installing from PPA
+
+An example pillar for installing from Debian based PPA repository:
+
+    node:
+      version: 6.9.4
+      install_from_ppa: True
+      ppa:
+        repository_url: https://deb.nodesource.com/node_6.x
+
 ## Installing from source
 
 An example pillar file looks as follows:

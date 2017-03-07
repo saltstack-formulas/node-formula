@@ -1,6 +1,6 @@
 {% set node = pillar.get('node', {}) -%}
-{% set version = node.get('version', '5.4.0') -%}
-{% set checksum = node.get('checksum', 'sha256=f037e2734f52b9de63e6d4a4e80756477b843e6f106e0be05591a16b71ec2bd0') -%}
+{% set version = node.get('version', '6.10.0') -%}
+{% set checksum = node.get('checksum', 'f037e2734f52b9de63e6d4a4e80756477b843e6f106e0be05591a16b71ec2bd0') -%}
 {% if grains.get('osarch', {}) == 'armhf' -%}
 {% set arch = 'armv7l' -%}
 {% else -%}
@@ -16,17 +16,40 @@
 {% set tar_options = 'z' -%}
 {% endif -%}
 
+Get binary package:
+  file.managed:
+    - name: /usr/local/src/{{ pkgname }}.tar.{{ format }}
+    - source: https://nodejs.org/dist/v{{ version }}/{{ pkgname }}.tar.{{ format }}
+    - source_hash: sha256={{ checksum }}
+
 Extract binary package:
   archive.extracted:
     - name: /usr/local/src/
-    - source: https://nodejs.org/dist/v{{ version }}/{{ pkgname }}.tar.{{ format }}
     - source_hash: {{ checksum }}
+    - source: /usr/local/src/{{ pkgname }}.tar.gz
     - archive_format: tar
     - tar_options: {{ tar_options }}
     - if_missing: /usr/local/src/{{ pkgname }}
+    - require:
+      - file: Get binary package
+
+Remove existing include directory:
+  file.absent:
+    - name: /usr/local/include/node
+    - unless: cmp /usr/local/bin/node /usr/local/src/{{ pkgname }}/bin/node
+    - require:
+      - archive: Extract binary package
+
+Remove existing npm:
+  file.absent:
+    - name: /usr/local/lib/node_modules/npm
+    - onchanges:
+      - file: Remove existing include directory
 
 Copy lib:
   cmd.run:
     - cwd: /usr/local/src/{{ pkgname }}/
     - name: cp -r bin/ include/ lib/ share/ /usr/local/
-    - unless: cmp /usr/local/bin/node /usr/local/src/{{ pkgname }}/bin/node
+    - unless:
+      - cmp /usr/local/bin/node /usr/local/src/{{ pkgname }}/bin/node
+      - npm --version

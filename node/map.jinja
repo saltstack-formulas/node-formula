@@ -1,18 +1,18 @@
 {% set pillar_get = salt['pillar.get'] -%}
 
 {% if pillar_get('node:install_from_source') %}
-{% set default_npm_prefix = '/usr/local' %}
+  {% set default_npm_prefix = '/usr/local' %}
 {% else %}
-{% set default_npm_prefix = '/usr' %}
+  {% set default_npm_prefix = '/usr' %}
 {% endif %}
 {% set npm_prefix = pillar_get('npm:prefix', default_npm_prefix) %}
 {% set npm_bin = '{0}/bin/npm'.format(npm_prefix) %}
 {% set npm_src_requirement = 'file: {0}'.format(npm_bin) %}
 
 {% if npm_prefix == '/usr' %}
-{% set npmrc_prefix = '' %}
+  {% set npmrc_prefix = '' %}
 {% else %}
-{% set npmrc_prefix = npm_prefix %}
+  {% set npmrc_prefix = npm_prefix %}
 {% endif %}
 {% set npmrc = '{0}/etc/npmrc'.format(npmrc_prefix) %}
 
@@ -35,8 +35,17 @@
     },
 }, grain='os', merge=pillar_get('node:lookup')) %}
 
-{% if pillar_get('node:install_from_source') or (grains['os'] == 'Debian' and grains['osrelease']|float < 8 and not pillar_get('node:install_from_ppa')) %}
-{% set npm_requirement = npm_src_requirement %}
+{% if pillar_get('node:install_from_source') or (grains['os_family'] == 'Debian' and grains['osrelease']|float < 8 and not pillar_get('node:install_from_ppa')) %}
+  {% set npm_requirement = npm_src_requirement %}
 {% else %}
-{% set npm_requirement = 'pkg: {0}'.format(node['npm_pkg']) %}
+  {% set npm_requirement = 'pkg: {0}'.format(node['npm_pkg']) %}
 {% endif %}
+
+  {% set from_src_requirements = salt['grains.filter_by']({
+  'Debian': {
+    'pkgs': ['git', 'curl', 'gcc', 'pkg-config', 'build-essential', 'checkinstall', 'libssl-dev', 'g++']
+  },
+  'RedHat': {
+    'pkgs': ['git', 'curl', 'gcc','openssl-devel','pkgconfig', 'gcc-c++', 'make', 'automake']
+  },
+}, grain='os_family', merge=pillar_get('from_src_requirements:lookup'), default='Debian') %}
