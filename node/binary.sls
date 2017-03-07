@@ -1,6 +1,6 @@
 {% set node = pillar.get('node', {}) -%}
 {% set version = node.get('version', '6.10.0') -%}
-{% set checksum = node.get('checksum', 'f037e2734f52b9de63e6d4a4e80756477b843e6f106e0be05591a16b71ec2bd0') -%}
+{% set checksum = node.get('checksum', '20b144da9bc3c314abfb760e90580a94091037257fc0b2c32871bc29257f7545') -%}
 {% if grains.get('osarch', {}) == 'armhf' -%}
 {% set arch = 'armv7l' -%}
 {% else -%}
@@ -20,13 +20,12 @@ Get binary package:
   file.managed:
     - name: /usr/local/src/{{ pkgname }}.tar.{{ format }}
     - source: https://nodejs.org/dist/v{{ version }}/{{ pkgname }}.tar.{{ format }}
-    - source_hash: sha256={{ checksum }}
+    - source_hash: {{ checksum }}
 
 Extract binary package:
   archive.extracted:
     - name: /usr/local/src/
-    - source_hash: {{ checksum }}
-    - source: /usr/local/src/{{ pkgname }}.tar.gz
+    - source: /usr/local/src/{{ pkgname }}.tar.{{ format }}
     - archive_format: tar
     - options: {{ tar_options }}
     - if_missing: /usr/local/src/{{ pkgname }}
