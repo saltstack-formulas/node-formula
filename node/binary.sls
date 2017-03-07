@@ -28,7 +28,7 @@ Extract binary package:
     - source_hash: {{ checksum }}
     - source: /usr/local/src/{{ pkgname }}.tar.gz
     - archive_format: tar
-    - tar_options: {{ tar_options }}
+    - options: {{ tar_options }}
     - if_missing: /usr/local/src/{{ pkgname }}
     - require:
       - file: Get binary package
