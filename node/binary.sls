@@ -20,7 +20,7 @@ Get binary package:
   file.managed:
     - name: /usr/local/src/{{ pkgname }}.tar.{{ format }}
     - source: https://nodejs.org/dist/v{{ version }}/{{ pkgname }}.tar.{{ format }}
-    - source_hash: {{ checksum }}
+    - source_hash: https://nodejs.org/dist/v{{ version }}/SHASUMS256.txt
 
 Extract binary package:
   archive.extracted:
