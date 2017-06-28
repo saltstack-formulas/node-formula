@@ -1,19 +1,33 @@
 {% set node = pillar.get('node', {}) -%}
-{% set version = node.get('version', '5.4.0') -%}
-{% set checksum = node.get('checksum', 'f037e2734f52b9de63e6d4a4e80756477b843e6f106e0be05591a16b71ec2bd0') -%}
-{% set pkgname = 'node-v' ~ version ~ '-linux-x64' -%}
+{% set version = node.get('version', '6.10.0') -%}
+{% set checksum = node.get('checksum', '20b144da9bc3c314abfb760e90580a94091037257fc0b2c32871bc29257f7545') -%}
+{% if grains.get('osarch', {}) == 'armhf' -%}
+{% set arch = 'armv7l' -%}
+{% else -%}
+{% set arch = 'x64' -%}
+{% endif -%}
+{% set pkgname = 'node-v' ~ version ~ '-linux-' ~ arch -%}
+{% set format = node.get('format', 'gz') -%}
+{% if format == 'xz' -%}
+{% set tar_options = 'J' -%}
+{% elif format == 'bz2' -%}
+{% set tar_options = 'j' -%}
+{% else -%}
+{% set tar_options = 'z' -%}
+{% endif -%}
 
 Get binary package:
   file.managed:
-    - name: /usr/local/src/{{ pkgname }}.tar.gz
-    - source: https://nodejs.org/dist/v{{ version }}/{{ pkgname }}.tar.gz
-    - source_hash: sha256={{ checksum }}
+    - name: /usr/local/src/{{ pkgname }}.tar.{{ format }}
+    - source: https://nodejs.org/dist/v{{ version }}/{{ pkgname }}.tar.{{ format }}
+    - source_hash: {{ checksum }}
 
 Extract binary package:
   archive.extracted:
     - name: /usr/local/src/
-    - source: /usr/local/src/{{ pkgname }}.tar.gz
+    - source: /usr/local/src/{{ pkgname }}.tar.{{ format }}
     - archive_format: tar
+    - options: {{ tar_options }}
     - if_missing: /usr/local/src/{{ pkgname }}
     - require:
       - file: Get binary package
