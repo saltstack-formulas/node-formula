@@ -15,7 +15,7 @@ nodejs.ppa:
     - key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
     - keyserver: keyserver.ubuntu.com
     - require_in:
-      pkg: node
+      - pkg: nodejs
 {%- endif %}
 nodejs:
   pkg.installed:
