@@ -1,5 +1,5 @@
 {% from "node/map.jinja" import npmrc with context %}
-{% set config = salt['pillar.get']('npm:config') %}
+{% set config = salt['pillar.get']('npm:config', '') %}
 {% if config %}
 {{ npmrc }}:
   file.managed:

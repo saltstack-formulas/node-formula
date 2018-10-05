@@ -1,6 +1,6 @@
 {%- from "node/map.jinja" import node, npm_bin with context %}
 
-{%- if grains['os_family'] in ['Ubuntu', 'Debian'] and salt['pillar.get']('node:install_from_ppa') %}
+{%- if grains['os_family'] in ['Ubuntu', 'Debian'] and salt['pillar.get']('node:install_from_ppa', '') %}
 nodejs.ppa:
   pkg.installed:
     - name: apt-transport-https
@@ -21,6 +21,6 @@ nodejs:
   pkg.installed:
     - name: {{ node.node_pkg }}
     - reload_modules: true
-{%- if salt['pillar.get']('node:version') %}
-    - version: {{ salt['pillar.get']('node:version') }}
+{%- if salt['pillar.get']('node:version', '') %}
+    - version: {{ salt['pillar.get']('node:version', '') }}
 {%- endif %}
