@@ -41,10 +41,54 @@ The checksum for the *node-v…-linux-x64.tar.gz* file has to be provided.
 When building from sources, only newer node versions with npm included are supported (Versions 0.9.x and newer should
 be safe). Also, the executable will be called `node`.
 
-If you need to install older versions, where the executable is called `nodejs`, use 
+If you need to install older versions, where the executable is called `nodejs`, use
 [previous commits](https://github.com/saltstack-formulas/node-formula/commit/bcc649588c162686c4dbde486da840ccd060edf6)
 of this formula.
 
 ## Installing from packages
 
 See the [example pillar file](https://github.com/saltstack-formulas/node-formula/blob/master/pillar.example).
+
+
+## <a name='testing'></a> Running Tests
+
+This test runner was implemented using the [formula-test-harness](https://github.com/intuitivetechnologygroup/formula-test-harness) project.
+
+
+Tests will be run on the following base images:
+
+* `simplyadrian/allsalt:centos_master_2017.7.2`
+* `simplyadrian/allsalt:debian_master_2017.7.2`
+* `simplyadrian/allsalt:opensuse_master_2017.7.2`
+* `simplyadrian/allsalt:ubuntu_master_2016.11.3`
+* `simplyadrian/allsalt:ubuntu_master_2017.7.2`
+
+##### Start a virtualenv
+
+```bash
+pip install -U virtualenv
+virtualenv .venv
+source .venv/bin/activate
+```
+
+##### Install local requirements
+
+```bash
+make setup
+```
+
+##### Run tests
+
+* `make test-centos_master_2017.7.2`
+* `make test-debian_master_2017.7.2`
+* `make test-opensuse_master_2017.7.2`
+* `make test-ubuntu_master_2016.11.3`
+* `make test-ubuntu_master_2017.7.2`
+
+### <a name='run-containers'></a> Run Containers
+
+* `make local-centos_master_2017.7.2`
+* `make local-debian_master_2017.7.2`
+* `make local-opensuse_master_2017.7.2`
+* `make local-ubuntu_master_2016.11.3`
+* `make local-ubuntu_master_2017.7.2`
