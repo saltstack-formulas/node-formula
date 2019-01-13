@@ -1,6 +1,6 @@
 {% set pillar_get = salt['pillar.get'] -%}
 
-{% if pillar_get('node:install_from_source') %}
+{% if pillar_get('node:install_from_source', '') %}
   {% set default_npm_prefix = '/usr/local' %}
 {% else %}
   {% set default_npm_prefix = '/usr' %}
@@ -22,20 +22,20 @@
         'npm_pkg': 'npm',
     },
     'Debian': {
-        'node_pkg': 'nodejs' if grains['osrelease']|float < 8 or pillar_get('node:install_from_ppa') else 'nodejs-legacy',
-        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
+        'node_pkg': 'nodejs' if grains['osrelease']|float < 8 or pillar_get('node:install_from_ppa', '') else 'nodejs-legacy',
+        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa', '') else 'npm',
     },
     'Ubuntu': {
         'node_pkg': 'nodejs',
-        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
+        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa', '') else 'npm',
     },
     'Raspbian': {
         'node_pkg': 'nodejs',
-        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
+        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa', '') else 'npm',
     },
-}, grain='os', merge=pillar_get('node:lookup')) %}
+}, grain='os', merge=pillar_get('node:lookup', '')) %}
 
-{% if pillar_get('node:install_from_source') or (grains['os_family'] == 'Debian' and grains['osrelease']|float < 8 and not pillar_get('node:install_from_ppa')) %}
+{% if pillar_get('node:install_from_source', '') or (grains['os_family'] == 'Debian' and grains['osrelease']|float < 8 and not pillar_get('node:install_from_ppa', '')) %}
   {% set npm_requirement = npm_src_requirement %}
 {% else %}
   {% set npm_requirement = 'pkg: {0}'.format(node['npm_pkg']) %}
@@ -48,4 +48,4 @@
   'RedHat': {
     'pkgs': ['git', 'curl', 'gcc','openssl-devel','pkgconfig', 'gcc-c++', 'make', 'automake']
   },
-}, grain='os_family', merge=pillar_get('from_src_requirements:lookup'), default='Debian') %}
+}, grain='os_family', merge=pillar_get('from_src_requirements:lookup', ''), default='Debian') %}
