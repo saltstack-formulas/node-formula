@@ -13,7 +13,7 @@ node:
 
 # Install from PPA:
 node:
-  version: 6.9.4
+  version: 12.7.0-1nodesource1
   install_from_ppa: True
   ppa:
-    repository_url: https://deb.nodesource.com/node_6.x
+    repository_url: https://deb.nodesource.com/node_12.x
