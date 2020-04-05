@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-    {%- if grains.os_family not in ('FreeBSD', 'Windows', 'MacOS',) %}
+    {%- if grains.os_family not in ('FreeBSD', 'Windows',) %}
 
 include:
   - .config.clean
