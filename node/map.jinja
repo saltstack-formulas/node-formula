@@ -1,51 +1,57 @@
-{% set pillar_get = salt['pillar.get'] -%}
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
 
-{% if pillar_get('node:install_from_source') %}
-  {% set default_npm_prefix = '/usr/local' %}
-{% else %}
-  {% set default_npm_prefix = '/usr' %}
-{% endif %}
-{% set npm_prefix = pillar_get('npm:prefix', default_npm_prefix) %}
-{% set npm_bin = '{0}/bin/npm'.format(npm_prefix) %}
-{% set npm_src_requirement = 'file: {0}'.format(npm_bin) %}
+{%- set tplroot = tpldir.split('/')[0] %}
+{%- import_yaml tplroot ~ "/defaults.yaml" as default_settings %}
+{%- import_yaml tplroot ~ "/osfamilymap.yaml" as osfamilymap %}
+{%- import_yaml tplroot ~ "/osfamilymap.yaml" as osmap %}
+{%- import_yaml tplroot ~ "/osarchmap.yaml" as osarchmap %}
 
-{% if npm_prefix == '/usr' %}
-  {% set npmrc_prefix = '' %}
-{% else %}
-  {% set npmrc_prefix = npm_prefix %}
-{% endif %}
-{% set npmrc = '{0}/etc/npmrc'.format(npmrc_prefix) %}
+{%- set _config = salt['config.get'](tplroot, default={}) %}
+{%- set defaults = salt['grains.filter_by'](
+      default_settings,
+      default=tplroot,
+      merge=salt['grains.filter_by']( osfamilymap, grain='os_family',
+        merge=salt['grains.filter_by']( osmap, grain='os',
+          merge=salt['grains.filter_by']( osarchmap, grain='osarch',
+            merge=salt['grains.filter_by']( _config, default='lookup'
+            )
+          )
+        )
+      )
+    )
+%}
+{%- set node = salt['grains.filter_by']( {'defaults': defaults}, default='defaults', merge=_config) %}
 
-{% set node = salt['grains.filter_by']({
-    'CentOS': {
-        'node_pkg': 'nodejs',
-        'npm_pkg': 'npm',
-    },
-    'Debian': {
-        'node_pkg': 'nodejs' if grains['osrelease']|float < 8 or pillar_get('node:install_from_ppa') else 'nodejs-legacy',
-        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
-    },
-    'Ubuntu': {
-        'node_pkg': 'nodejs',
-        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
-    },
-    'Raspbian': {
-        'node_pkg': 'nodejs',
-        'npm_pkg': 'nodejs' if pillar_get('node:install_from_ppa') else 'npm',
-    },
-}, grain='os', merge=pillar_get('node:lookup')) %}
+{%- if node.pkg.use_upstream_source %}
+    {%- do node.pkg.source.update({ 'name': node.dir.source ~ '/node-' ~ node.version,
+           'source': '%s/v%s.%s'|format(node.pkg.source.uri, node.version, node.pkg.suffix) }) %}
+{%- endif %}
+{%- if node.pkg.use_upstream_binary %}
+    {%- set dirname = 'node-v%s-%s-%s'|format( node.version, node.kernel, node.arch ) %}
+    {%- do node.pkg.binary.update({
+           'name': node.dir.binary ~ '/' ~ dirname,
+           'source_hash': node.pkg.binary.uri ~ '/v' ~ node.version ~ '/SHASUMS256.txt',
+           'source': '%s/v%s/%s.%s'|format(node.pkg.binary.uri, node.version, dirname, node.pkg.suffix)}) %}
+{%- endif %}
 
-{% if pillar_get('node:install_from_source') or (grains['os_family'] == 'Debian' and grains['osrelease']|float < 8 and not pillar_get('node:install_from_ppa')) %}
-  {% set npm_requirement = npm_src_requirement %}
-{% else %}
-  {% set npm_requirement = 'pkg: {0}'.format(node['npm_pkg']) %}
-{% endif %}
+## Legacy support (remove on/after Jan 2021) ##
 
-  {% set from_src_requirements = salt['grains.filter_by']({
-  'Debian': {
-    'pkgs': ['git', 'curl', 'gcc', 'pkg-config', 'build-essential', 'checkinstall', 'libssl-dev', 'g++']
-  },
-  'RedHat': {
-    'pkgs': ['git', 'curl', 'gcc','openssl-devel','pkgconfig', 'gcc-c++', 'make', 'automake']
-  },
-}, grain='os_family', merge=pillar_get('from_src_requirements:lookup'), default='Debian') %}
+{%- if salt['pillar.get']('node:install_from_ppa') %}
+       {%- do node.pkg.update({ 'use_upstream_repo': True }) %}
+       {%- if salt['pillar.get']('node:version') %}
+              {%- do node.pkg.update({ 'version': salt['pillar.get']('node:version')}) %}
+       {%- endif %}
+{%- endif %}
+{%- if salt['pillar.get']('node:install_from_source') %}
+       {%- do node.pkg.update({ 'use_upstream_source': True }) %}
+       {%- if salt['pillar.get']('node:checksum') %}
+              {%- do node.pkg.source.update({ 'source_hash': salt['pillar.get']('node:checksum') }) %}
+       {%- endif %}
+{%- endif %}
+{%- if salt['pillar.get']('node:install_from_binary') %}
+       {%- do node.pkg.update({ 'use_upstream_binary': True }) %}
+       {%- if salt['pillar.get']('node:checksum') %}
+              {%- do node.pkg.binary.update({ 'source_hash': salt['pillar.get']('node:checksum') }) %}
+       {%- endif %}
+{%- endif %}

@@ -1,0 +1,93 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Setup variables using grains['os_family'] based logic.
+# You just need to add the key:values for an `os_family` that differ
+# from `defaults.yaml`.
+# Only add an `os_family` which is/will be supported by the formula
+#
+# If you do not need to provide defaults via the `os_family` grain,
+# you will need to provide at least an empty dict in this file, e.g.
+# osfamilymap: {}
+---
+{%- if grains.os == 'MacOS' %}
+    {%- set macos_rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
+    {%- set macos_rootgroup = salt['cmd.run']("stat -f '%Sg' /dev/console") %}
+{%- endif %}
+
+Debian:
+  pkg:
+    deps:
+      - pkg-config
+      - build-essential
+      - make
+      - checkinstall
+      - g++
+      - libssl-dev
+      - python3-distutils
+            {%- if 'oscodename' in grains %}
+    repo:
+      humanname: NodeSource Node.js Repository
+      name: deb https://deb.nodesource.com/node_13.x {{ grains.oscodename }} main
+      dist: {{ grains['oscodename'] }}
+      file: /etc/apt/sources.list.d/nodesource.list
+      key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      keyserver: keyserver.ubuntu.com
+            {%- endif %}
+
+RedHat:
+  pkg:
+    deps:
+      - openssl-devel
+      - pkgconfig
+      - gcc-c++
+      - make
+      - automake
+      - ruby-devel
+  service:
+    name: node
+    enabled: false
+
+Suse:
+  pkg:
+    name: nodejs12
+
+Gentoo:
+  pkg:
+    use_upstream_binary: true
+
+Arch: {}
+
+Alpine: {}
+
+FreeBSD:
+  pkg:
+    name: node
+    source:
+      # node-v13.12.0.tar.gz  ????
+      source_hash: 1b74d624493f17210b96dbd925066034e2d540090a36a99d5c50155cd6726a38
+
+OpenBSD:
+  pkg:
+    name: node
+    source:
+      # node-v13.12.0.tar.gz  ????
+      source_hash: 1b74d624493f17210b96dbd925066034e2d540090a36a99d5c50155cd6726a38
+
+Solaris: {}
+
+Windows:
+  pkg:
+    source:
+      # win-x64/node.exe
+      source_hash: a5c49d8053f399bf8eb3de86426b2274982ddceaeade7fb2f3446b4ebc7cd2e4
+      archive_suffix: exe
+
+MacOS:
+  rootuser: {{ macos_rootuser | d('') }}
+  rootgroup: {{ macos_rootgroup | d('') }}
+  pkg:
+    name: node    # homebrew; macports: nodejs7
+    source:
+      # darwin amd64 tarball, node-v13.12.0-darwin-x64.tar.gz
+      source_hash: 1fe3103610e8eb66ae71872ea1b4e868a638292a4e7ad0e41976a9fe417a09c7
