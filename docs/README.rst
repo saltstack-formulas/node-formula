@@ -1,7 +1,7 @@
 .. _readme:
 
 node-formula
-===============
+============
 
 |img_travis| |img_sr|
 
@@ -34,12 +34,20 @@ which contains the currently released version. This formula is versioned accordi
 
 See `Formula Versioning Section <https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html#versioning>`_ for more details.
 
+If you need (non-default) configuration, please pay attention to the ``pillar.example`` file and/or `Special notes`_ section.
+
 Contributing to this repo
 -------------------------
 
 **Commit message formatting is significant!!**
 
 Please see `How to contribute <https://github.com/saltstack-formulas/.github/blob/master/CONTRIBUTING.rst>`_ for more details.
+
+Special notes
+-------------
+
+None.
+
 
 Available states
 ----------------
@@ -48,7 +56,7 @@ Available states
    :local:
 
 ``node``
-^^^^^^^^^^^
+^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
@@ -57,28 +65,28 @@ manages Node configuration file and then
 starts the associated node service.
 
 ``node.package``
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 This state will install Node package only.
 
 ``node.binary``
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 This state will install Node from binary only.
 
 ``node.source``
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 This state will install Node from source only.
 
 ``node.config``
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 This state will configure npmrc and/or environment and has a dependency on ``node.install``
 via include list.
 
 ``node.clean``
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
@@ -87,25 +95,25 @@ removes the configuration file and
 then uninstalls the package.
 
 ``node.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove the configuration of Node and has a
 dependency on ``node.package.clean`` via include list.
 
 ``node.package.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Node package and has a dependency on
 ``node.config.clean`` via include list.
 
 ``node.source.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Node package and has a dependency on
 ``node.config.clean`` via include list.
 
 ``node.binary.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Node package and has a dependency on
 ``node.config.clean`` via include list.
