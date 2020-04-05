@@ -2,4 +2,4 @@
 # vim: ft=sls
 
 include:
-  - .install
+  - node.package.install   # full path for legacy symlinks

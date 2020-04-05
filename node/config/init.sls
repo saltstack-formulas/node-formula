@@ -2,5 +2,5 @@
 # vim: ft=sls
 
 include:
-  - .file
-  - .environ
+  - node.config.file   # full path for legacy symlinks
+  - node.config.environ

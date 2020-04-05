@@ -8,7 +8,7 @@
     {%- if node.pkg.repo and node.pkg.use_upstream_repo %}
 
 include:
-  - .repo
+  - node.package.repo  # full path for legacy symlink
 
     {%- endif %}
 
