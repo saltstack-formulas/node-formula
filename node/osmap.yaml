@@ -14,11 +14,6 @@ Amazon:
   pkg:
     use_upstream_binary: true
 
-Ubuntu:
-  pkg:
-    deps:
-      - make
-
 # os_family: Gentoo
 Funtoo: {}
 

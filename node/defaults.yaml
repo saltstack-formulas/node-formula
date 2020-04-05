@@ -27,6 +27,8 @@ node:
       - git
       - curl
       - make
+      - tar
+      - gzip
       - gcc
     repo: {}
     suffix: tar.gz

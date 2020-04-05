@@ -7,6 +7,12 @@
 {%- from tplroot ~ "/files/macros.jinja" import format_kwargs with context %}
 
 node-package-binary-install:
+  pkg.installed:
+    - names:
+      - tar
+      - gzip
+    - require_in:
+      - file: node-package-binary-install
   file.directory:
     - name: {{ node.pkg.binary.name }}
     - user: {{ node.rootuser }}
