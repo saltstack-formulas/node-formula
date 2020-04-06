@@ -10,6 +10,6 @@ node:
       source_hash: 37aff6cc2f451d1dbe693d18ad87fad352ed4f74f7b8e232590dd7f2f6b5d525
 
   config:
-    prefix: '${HOME}/.npm-packages'
+    prefix: '/home/vagrant/.npm-packages'
   environ:
     a: b

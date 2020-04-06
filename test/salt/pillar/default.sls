@@ -4,14 +4,14 @@
 node:
   version: 13.12.0
   config:
-    prefix: '${HOME}/.npm-packages'
+    prefix: '/home/vagrant/.npm-packages'
   environ:
     a: b
   pkg:
     use_upstream_repo: false
-    use_upstream_binary: false
+    use_upstream_archive: false
     use_upstream_source: false
-    binary:
+    archive:
       uri: https://nodejs.org/dist
       source_hash: 3e66b14bbeb9ea1ba129fae7c65374844f4ddaf1e48e2bc19b3b2570e158e362
     source:

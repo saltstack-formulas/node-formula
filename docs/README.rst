@@ -69,10 +69,10 @@ starts the associated node service.
 
 This state will install Node package only.
 
-``node.binary``
+``node.archive``
 ^^^^^^^^^^^^^^^
 
-This state will install Node from binary only.
+This state will install Node from archive only.
 
 ``node.source``
 ^^^^^^^^^^^^^^^
@@ -112,7 +112,7 @@ This state will remove Node package and has a dependency on
 This state will remove Node package and has a dependency on
 ``node.config.clean`` via include list.
 
-``node.binary.clean``
+``node.archive.clean``
 ^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Node package and has a dependency on

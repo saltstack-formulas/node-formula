@@ -9,7 +9,7 @@
            {%- set p = node.pkg %}
 
 include:
-  - {{ '.source' if p.use_upstream_source else '.binary' if p.use_upstream_binary else '.package' }}
+  - {{ '.source' if p.use_upstream_source else '.archive' if p.use_upstream_archive else '.package' }}
   - .config
 
     {%- else %}

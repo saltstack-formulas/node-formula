@@ -12,7 +12,7 @@
 ---
 Amazon:
   pkg:
-    use_upstream_binary: true
+    use_upstream_archive: true
 
 # os_family: Gentoo
 Funtoo: {}

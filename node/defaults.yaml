@@ -15,13 +15,13 @@ node:
     altpriority: 0
 
   dir:
-    binary: /usr/local
+    archive: /usr/local
     source: /usr/local/src
   pkg:
     name: nodejs
     version: None
     use_upstream_repo: false
-    use_upstream_binary: false
+    use_upstream_archive: false
     use_upstream_source: false
     deps:
       - git
@@ -32,7 +32,7 @@ node:
       - gcc
     repo: {}
     suffix: tar.gz
-    binary:
+    archive:
       uri: https://nodejs.org/dist
       source_hash: 3e66b14bbeb9ea1ba129fae7c65374844f4ddaf1e48e2bc19b3b2570e158e362
       enforce_toplevel: false
@@ -53,7 +53,7 @@ node:
     splay: 10
 
   # legacy flags
-  install_from_source: false  # use_upstream_binary
+  install_from_source: false  # use_upstream_archive
   install_from_ppa: false     # use_upstream_repo
   node_pkg: nodejs
   npm_pkg: npm

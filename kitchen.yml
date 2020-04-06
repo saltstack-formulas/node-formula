@@ -189,7 +189,7 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/default
-  - name: binary
+  - name: archive
     provisioner:
       state_top:
         base:
@@ -201,10 +201,10 @@ suites:
             '*':
               - node
       pillars_from_files:
-        node.sls: test/salt/pillar/binary.sls
+        node.sls: test/salt/pillar/archive.sls
     verifier:
       inspec_tests:
-        - path: test/integration/binary
+        - path: test/integration/archive
   - name: source
     provisioner:
       state_top:

@@ -27,12 +27,12 @@
     {%- do node.pkg.source.update({ 'name': node.dir.source ~ '/node-' ~ node.version,
            'source': '%s/v%s.%s'|format(node.pkg.source.uri, node.version, node.pkg.suffix) }) %}
 {%- endif %}
-{%- if node.pkg.use_upstream_binary %}
+{%- if node.pkg.use_upstream_archive %}
     {%- set dirname = 'node-v%s-%s-%s'|format( node.version, node.kernel, node.arch ) %}
-    {%- do node.pkg.binary.update({
-           'name': node.dir.binary ~ '/' ~ dirname,
-           'source_hash': node.pkg.binary.uri ~ '/v' ~ node.version ~ '/SHASUMS256.txt',
-           'source': '%s/v%s/%s.%s'|format(node.pkg.binary.uri, node.version, dirname, node.pkg.suffix)}) %}
+    {%- do node.pkg.archive.update({
+           'name': node.dir.archive ~ '/' ~ dirname,
+           'source_hash': node.pkg.archive.uri ~ '/v' ~ node.version ~ '/SHASUMS256.txt',
+           'source': '%s/v%s/%s.%s'|format(node.pkg.archive.uri, node.version, dirname, node.pkg.suffix)}) %}
 {%- endif %}
 
 ## Legacy support (remove on/after Jan 2021) ##
@@ -49,9 +49,9 @@
               {%- do node.pkg.source.update({ 'source_hash': salt['pillar.get']('node:checksum') }) %}
        {%- endif %}
 {%- endif %}
-{%- if salt['pillar.get']('node:install_from_binary') %}
-       {%- do node.pkg.update({ 'use_upstream_binary': True }) %}
+{%- if salt['pillar.get']('node:install_from_archive') %}
+       {%- do node.pkg.update({ 'use_upstream_archive': True }) %}
        {%- if salt['pillar.get']('node:checksum') %}
-              {%- do node.pkg.binary.update({ 'source_hash': salt['pillar.get']('node:checksum') }) %}
+              {%- do node.pkg.archive.update({ 'source_hash': salt['pillar.get']('node:checksum') }) %}
        {%- endif %}
 {%- endif %}

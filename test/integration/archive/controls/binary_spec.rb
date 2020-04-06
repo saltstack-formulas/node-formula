@@ -2,7 +2,7 @@
 
 title 'node archives profile'
 
-control 'node binary archive' do
+control 'node archive' do
   impact 1.0
   title 'should be installed'
 
