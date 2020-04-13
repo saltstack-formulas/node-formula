@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+node:
+  version: 13.12.0
+  config_file: /etc/npmrc
+  config: {}
+  environ_file: /etc/default/node.sh
+  environ: []
+  rootuser: root
+  rootgroup: root
+  kernel: '{{ grains.kernel|lower }}'
+  arch: x64
+  linux:
+    altpriority: 0
+
+  dir:
+    archive: /usr/local
+    source: /usr/local/src
+  pkg:
+    name: nodejs
+    version: None
+    use_upstream_repo: false
+    use_upstream_archive: false
+    use_upstream_source: false
+    deps:
+      - git
+      - curl
+      - make
+      - tar
+      - gzip
+      - gcc
+    repo: {}
+    suffix: tar.gz
+    archive:
+      uri: https://nodejs.org/dist
+      source_hash: 3e66b14bbeb9ea1ba129fae7c65374844f4ddaf1e48e2bc19b3b2570e158e362
+      enforce_toplevel: false
+      trim_output: true
+      options: '--strip-components=1'
+    source:
+      uri: https://github.com/nodejs/node/archive
+      source_hash: 37aff6cc2f451d1dbe693d18ad87fad352ed4f74f7b8e232590dd7f2f6b5d525
+      trim_output: true
+      enforce_toplevel: false
+      options: '--strip-components=1'
+
+  retry_option:
+    # https://docs.saltstack.com/en/latest/ref/states/requisites.html#retrying-states
+    attempts: 3
+    until: true
+    interval: 60
+    splay: 10
+
+  # legacy flags
+  install_from_source: false  # use_upstream_archive
+  install_from_ppa: false     # use_upstream_repo
+  node_pkg: nodejs
+  npm_pkg: npm
+  make_jobs: 1
