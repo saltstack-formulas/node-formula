@@ -5,6 +5,6 @@ node:
   pkg:
     use_upstream_repo: true    # Debian family only
   config:
-    prefix: ${HOME}/.npm-packages
+    prefix: /home/vagrant/.npm-packages
   environ:
     a: b

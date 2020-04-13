@@ -10,8 +10,8 @@
 
     {%- if node.pkg.use_upstream_source %}
         {%- set sls_package_install = tplroot ~ '.source.install' %}
-    {%- elif node.pkg.use_upstream_binary %}
-        {%- set sls_package_install = tplroot ~ '.binary.install' %}
+    {%- elif node.pkg.use_upstream_archive %}
+        {%- set sls_package_install = tplroot ~ '.archive.install' %}
     {%- else %}
         {%- set sls_package_install = tplroot ~ '.package.install' %}
     {%- endif %}

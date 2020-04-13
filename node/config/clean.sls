@@ -9,8 +9,8 @@
 
     {%- if node.pkg.use_upstream_source %}
         {%- set sls_package_clean = tplroot ~ '.source.clean' %}
-    {%- elif node.pkg.use_upstream_binary %}
-        {%- set sls_package_clean = tplroot ~ '.binary.clean' %}
+    {%- elif node.pkg.use_upstream_archive %}
+        {%- set sls_package_clean = tplroot ~ '.archive.clean' %}
     {%- else %}
         {%- set sls_package_clean = tplroot ~ '.package.clean' %}
     {%- endif %}

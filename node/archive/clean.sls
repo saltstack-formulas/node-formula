@@ -5,12 +5,12 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import node with context %}
 
-node-package-binary-clean-file-absent:
+node-package-archive-clean-file-absent:
   file.absent:
     - names:
-      - {{ node.pkg.binary.name }}
+      - {{ node.pkg.archive.name }}
            {%- if node.linux.altpriority|int == 0 and node.kernel in ('linux', 'darwin') %}
-      - {{ node.dir.binary }}/bin/node
-      - {{ node.dir.binary }}/bin/npm
-      - {{ node.dir.binary }}/bin/npx
+      - {{ node.dir.archive }}/bin/node
+      - {{ node.dir.archive }}/bin/npm
+      - {{ node.dir.archive }}/bin/npx
            {%- endif %}

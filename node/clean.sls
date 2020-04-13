@@ -7,7 +7,7 @@ include:
   - .config.clean
   - .package.clean
   - .source.clean
-  - .binary.clean
+  - .archive.clean
 
     {%- else %}
 
