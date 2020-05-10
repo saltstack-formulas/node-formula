@@ -9,7 +9,7 @@
 node-package-source-install:
       {%- if node.pkg.deps %}
   pkg.installed:
-    - names: {{ node.pkg.deps }}
+    - names: {{ node.pkg.deps|json }}
     - require_in:
       - file: node-package-source-install
       {%- endif %}
