@@ -50,7 +50,7 @@ RedHat:
 
 Suse:
   pkg:
-    name: nodejs12
+    name: nodejs10
 
 Gentoo:
   pkg:
