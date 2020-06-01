@@ -19,6 +19,7 @@ Formula to install Node.js on GNU/Linux, MacOS, and BSD.
 The default method is package. See pillar.example file for other ideas.
 
 .. contents:: **Table of Contents**
+   :depth: 1
 
 General notes
 -------------

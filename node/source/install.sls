@@ -4,12 +4,12 @@
 {#- Get the `tplroot` from `tpldir` #}
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import node with context %}
-{%- from tplroot ~ "/macros.jinja" import format_kwargs with context %}
+{%- from tplroot ~ "/files/macros.jinja" import format_kwargs with context %}
 
 node-package-source-install:
       {%- if node.pkg.deps %}
   pkg.installed:
-    - names: {{ node.pkg.deps }}
+    - names: {{ node.pkg.deps|json }}
     - require_in:
       - file: node-package-source-install
       {%- endif %}
