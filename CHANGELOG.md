@@ -1,5 +1,25 @@
 # Changelog
 
+# [1.0.0](https://github.com/saltstack-formulas/node-formula/compare/v0.14.2...v1.0.0) (2020-06-01)
+
+
+### Continuous Integration
+
+* **kitchen+travis:** add new platforms [skip ci] ([60239d4](https://github.com/saltstack-formulas/node-formula/commit/60239d44a5406a28b9e84423d66d0c6f71637b2d))
+* **kitchen+travis:** adjust matrix to add `3000.3` [skip ci] ([3527bc5](https://github.com/saltstack-formulas/node-formula/commit/3527bc5597dc767fb93c462e90654404e18a29ee))
+
+
+### Features
+
+* **formula:** store macros.jinja in subdir ([277d617](https://github.com/saltstack-formulas/node-formula/commit/277d617f97bbfce1ceb349cedc60b0b8f329ae6a))
+
+
+### BREAKING CHANGES
+
+* **formula:** Major refactor of formula to bring it in alignment with the
+`template-formula`.  As with all substantial changes, please ensure your
+existing configurations work in the ways you expect from this formula.
+
 ## [0.14.2](https://github.com/saltstack-formulas/node-formula/compare/v0.14.1...v0.14.2) (2020-05-02)
 
 
