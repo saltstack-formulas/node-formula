@@ -30,7 +30,7 @@ node-config-npmrc-file-managed-config_file:
     - makedirs: True
     - template: jinja
     - context:
-        config: {{ node.config }}
+        config: {{ node.config | tojson }}
     - require:
       - sls: {{ sls_package_install }}
 
