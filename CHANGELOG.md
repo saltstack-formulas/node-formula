@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.1](https://github.com/saltstack-formulas/node-formula/compare/v1.0.0...v1.0.1) (2020-12-16)
+
+
+### Continuous Integration
+
+* **gitlab-ci:** use GitLab CI as Travis CI replacement ([88cc5e4](https://github.com/saltstack-formulas/node-formula/commit/88cc5e4f8176f9c61f3aa67ae278a6356b017155))
+* **kitchen:** use `saltimages` Docker Hub where available [skip ci] ([4c4c93a](https://github.com/saltstack-formulas/node-formula/commit/4c4c93aa3904de698f55d4db1b55f7bfa8a3ee06))
+* **pre-commit:** add to formula [skip ci] ([5c6ac84](https://github.com/saltstack-formulas/node-formula/commit/5c6ac846426ed63d107d5e26c9b6f7723c9d0d89))
+* **pre-commit:** enable/disable `rstcheck` as relevant [skip ci] ([65d4b7b](https://github.com/saltstack-formulas/node-formula/commit/65d4b7ba353d52b9f5ec2db865c5f77d4e319d8a))
+* **pre-commit:** finalise `rstcheck` configuration [skip ci] ([f4009a0](https://github.com/saltstack-formulas/node-formula/commit/f4009a06a8db3e017b3c3df0b0d527e670e9e911))
+
+
+### Styles
+
+* **libtofs.jinja:** use Black-inspired Jinja formatting [skip ci] ([1f0a3d2](https://github.com/saltstack-formulas/node-formula/commit/1f0a3d2c0eb25e31e22d66e8388787050f13a381))
+
 # [1.0.0](https://github.com/saltstack-formulas/node-formula/compare/v0.14.2...v1.0.0) (2020-06-01)
 
 
