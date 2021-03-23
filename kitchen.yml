@@ -312,6 +312,7 @@ suites:
       state_top:
         base:
           '*':
+            - node._mapdata
             - node
       pillars:
         top.sls:
@@ -328,6 +329,7 @@ suites:
       state_top:
         base:
           '*':
+            - node._mapdata
             - node
       pillars:
         top.sls:
@@ -344,6 +346,7 @@ suites:
       state_top:
         base:
           '*':
+            - node._mapdata
             - node
       pillars:
         top.sls:
@@ -360,6 +363,7 @@ suites:
       state_top:
         base:
           '*':
+            - node._mapdata
             - node
       pillars:
         top.sls:
