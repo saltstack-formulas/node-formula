@@ -13,6 +13,13 @@ control 'nodejs package' do
       else
         'nodejs14'
       end
+    when 'bsd'
+      case platform[:name]
+      when 'freebsd'
+        'node'
+      else
+        'nodejs'
+      end
     else
       'nodejs'
     end
