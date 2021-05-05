@@ -1,5 +1,3 @@
-.. _readme:
-
 node-formula
 ============
 
@@ -71,7 +69,7 @@ starts the associated node service.
 This state will install Node package only.
 
 ``node.archive``
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 This state will install Node from archive only.
 
@@ -114,7 +112,7 @@ This state will remove Node package and has a dependency on
 ``node.config.clean`` via include list.
 
 ``node.archive.clean``
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Node package and has a dependency on
 ``node.config.clean`` via include list.
