@@ -7,7 +7,7 @@ control 'nodejs package' do
   package_name =
     case platform[:family]
     when 'suse'
-      'nodejs10'
+      'nodejs14'
     else
       'nodejs'
     end
