@@ -19,7 +19,7 @@ node:
     source: /usr/local/src
   pkg:
     name: nodejs
-    version: null
+    version: '14'
     use_upstream_repo: false
     use_upstream_archive: false
     use_upstream_source: false
