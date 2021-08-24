@@ -30,7 +30,7 @@ Debian:
       humanname: NodeSource Node.js Repository
       url: https://deb.nodesource.com
       dist: {{ grains['oscodename'] }}
-      comps: ['main', ]
+      comps: "main"
       file: /etc/apt/sources.list.d/nodesource.list
       key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
       keyserver: keyserver.ubuntu.com

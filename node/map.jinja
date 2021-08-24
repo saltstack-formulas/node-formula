@@ -35,7 +35,7 @@
            'source': '%s/v%s/%s.%s'|format(node.pkg.archive.uri, node.version, dirname, node.pkg.suffix)}) %}
 {%- endif %}
 {%- if node.pkg.use_upstream_repo -%}
-    {%- set full_repo_name = 'deb %s/node_%s.x %s %s'|format(node.pkg.repo.url, node.pkg.version, node.pkg.repo.dist, node.pkg.repo.comps[0]) -%}
+    {%- set full_repo_name = 'deb %s/node_%s.x %s'|format(node.pkg.repo.url, node.pkg.version, node.pkg.repo.dist) -%}
     {%- do node.pkg.repo.update({
            'name': full_repo_name}) -%}
 {%- endif -%}
