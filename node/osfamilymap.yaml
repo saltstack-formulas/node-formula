@@ -28,8 +28,9 @@ Debian:
             {%- if 'oscodename' in grains %}
     repo:
       humanname: NodeSource Node.js Repository
-      name: deb https://deb.nodesource.com/node_{{ salt['pillar.get']('node:pkg:version') }}.x {{ grains.oscodename }} main
+      url: https://deb.nodesource.com
       dist: {{ grains['oscodename'] }}
+      comps: ['main', ]
       file: /etc/apt/sources.list.d/nodesource.list
       key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
       keyserver: keyserver.ubuntu.com
