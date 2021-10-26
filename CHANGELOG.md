@@ -1,5 +1,48 @@
 # Changelog
 
+# [1.1.0](https://github.com/saltstack-formulas/node-formula/compare/v1.0.1...v1.1.0) (2021-10-26)
+
+
+### Bug Fixes
+
+* **debian:** allow version to be user-provided, don't force v13 ([9b1eb68](https://github.com/saltstack-formulas/node-formula/commit/9b1eb68fe2002f556fad27acb5c055e730b5509e))
+* **debian:** don't include comps in name and in comps, comps is string ([becd5ba](https://github.com/saltstack-formulas/node-formula/commit/becd5baed5b099cab985ce9b0ea4e65c37feda43))
+* **debian:** don't rely on pillar.get, build repo.name when needed ([67a3dda](https://github.com/saltstack-formulas/node-formula/commit/67a3dda9b3f00d0b9febf36fba50022f56225fe6))
+
+
+### Continuous Integration
+
+* **3003.1:** update inc. AlmaLinux, Rocky & `rst-lint` [skip ci] ([b47573e](https://github.com/saltstack-formulas/node-formula/commit/b47573e4ffca9b7f717a9cd942b0e09482fc6907))
+* **gemfile+lock:** use `ssf` customised `inspec` repo [skip ci] ([426bf1e](https://github.com/saltstack-formulas/node-formula/commit/426bf1ef3bd640ddfae1e0f2c45950b3f9945bf3))
+* **kitchen:** move `provisioner` block & update `run_command` [skip ci] ([a40e1e8](https://github.com/saltstack-formulas/node-formula/commit/a40e1e83fb699b826aaebb2ab6e8b6ac4261fd45))
+* **kitchen+ci:** update with latest `3003.2` pre-salted images [skip ci] ([e60311b](https://github.com/saltstack-formulas/node-formula/commit/e60311be2f08a6feedb1a4841bbeb3b2e043d3ba))
+* **kitchen+ci:** update with latest CVE pre-salted images [skip ci] ([0c485e2](https://github.com/saltstack-formulas/node-formula/commit/0c485e2146c24b8da612b25493024ace2d19560d))
+* add `arch-master` to matrix and update `.travis.yml` [skip ci] ([922e34d](https://github.com/saltstack-formulas/node-formula/commit/922e34db71046d3b2fcabc34b216d941fb780bd9))
+* add Debian 11 Bullseye & update `yamllint` configuration [skip ci] ([25d4626](https://github.com/saltstack-formulas/node-formula/commit/25d46263bc5a7c22a221dab3853c65300774f51e))
+* **commitlint:** ensure `upstream/master` uses main repo URL [skip ci] ([c7e7957](https://github.com/saltstack-formulas/node-formula/commit/c7e795783b5d158352857f276bdb86f8658617b5))
+* **gemfile+lock:** use `ssf` customised `kitchen-docker` repo [skip ci] ([a099234](https://github.com/saltstack-formulas/node-formula/commit/a099234a08e217c495b4ce770e2d1ce2e329958e))
+* **gitlab-ci:** add `rubocop` linter (with `allow_failure`) [skip ci] ([ae1484a](https://github.com/saltstack-formulas/node-formula/commit/ae1484aa4032cf54ea48fdbd3d014b1ae718a34c))
+* **kitchen+ci:** use latest pre-salted images (after CVE) [skip ci] ([490ccb2](https://github.com/saltstack-formulas/node-formula/commit/490ccb2aa9fd6fbcc73ed0f021b3a277b125c08b))
+* **kitchen+gitlab:** adjust matrix to add `3003` [skip ci] ([6138902](https://github.com/saltstack-formulas/node-formula/commit/6138902f6862a19f14da2c3b01573816f0fde8d4))
+* **kitchen+gitlab:** remove Ubuntu 16.04 & Fedora 32 (EOL) [skip ci] ([75dde65](https://github.com/saltstack-formulas/node-formula/commit/75dde65eb76f086665fc76bd90e8eb8bd51d0eb6))
+* **kitchen+gitlab-ci:** use latest pre-salted images [skip ci] ([8f864c1](https://github.com/saltstack-formulas/node-formula/commit/8f864c1d6d85e7094b2e8d151905d7ec302f6073))
+* **pre-commit:** update hook for `rubocop` [skip ci] ([fdb19f4](https://github.com/saltstack-formulas/node-formula/commit/fdb19f437563c534105cb7c1c2c515686cbcbb0f))
+
+
+### Documentation
+
+* **readme:** fix headings [skip ci] ([49e05b5](https://github.com/saltstack-formulas/node-formula/commit/49e05b51f97ad296de455876eeb6f364d206eead))
+
+
+### Features
+
+* **suse:** update installation from `nodejs10` => `nodejs14` [skip ci] ([bf107ff](https://github.com/saltstack-formulas/node-formula/commit/bf107ff537e120df4a10d50335b9a452a1d7508e))
+
+
+### Tests
+
+* standardise use of `share` suite & `_mapdata` state [skip ci] ([42f8881](https://github.com/saltstack-formulas/node-formula/commit/42f888114407dcde97e684566a474817f7a89aac))
+
 ## [1.0.1](https://github.com/saltstack-formulas/node-formula/compare/v1.0.0...v1.0.1) (2020-12-16)
 
 
