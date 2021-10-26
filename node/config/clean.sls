@@ -24,5 +24,5 @@ node-config-clean-file-absent:
       - {{ node.environ_file }}
     - require:
       - sls: {{ sls_package_clean }}
-      
+
 {%- endif %}
