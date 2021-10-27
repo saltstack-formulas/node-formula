@@ -39,24 +39,3 @@
     {%- do node.pkg.repo.update({
            'name': full_repo_name}) -%}
 {%- endif -%}
-
-## Legacy support (remove on/after Jan 2021) ##
-
-{%- if salt['pillar.get']('node:install_from_ppa') %}
-       {%- do node.pkg.update({ 'use_upstream_repo': True }) %}
-       {%- if salt['pillar.get']('node:version') %}
-              {%- do node.pkg.update({ 'version': salt['pillar.get']('node:version')}) %}
-       {%- endif %}
-{%- endif %}
-{%- if salt['pillar.get']('node:install_from_source') %}
-       {%- do node.pkg.update({ 'use_upstream_source': True }) %}
-       {%- if salt['pillar.get']('node:checksum') %}
-              {%- do node.pkg.source.update({ 'source_hash': salt['pillar.get']('node:checksum') }) %}
-       {%- endif %}
-{%- endif %}
-{%- if salt['pillar.get']('node:install_from_archive') %}
-       {%- do node.pkg.update({ 'use_upstream_archive': True }) %}
-       {%- if salt['pillar.get']('node:checksum') %}
-              {%- do node.pkg.archive.update({ 'source_hash': salt['pillar.get']('node:checksum') }) %}
-       {%- endif %}
-{%- endif %}
