@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.1](https://github.com/saltstack-formulas/node-formula/compare/v1.1.0...v1.1.1) (2021-10-27)
+
+
+### Bug Fixes
+
+* **package:** remove double colon on pillar item ([6049849](https://github.com/saltstack-formulas/node-formula/commit/60498496a9b3f1e59f8c32fa613ce4157ab82fbd))
+
+
+### Code Refactoring
+
+* **jinja:** remove on due date ([eddad91](https://github.com/saltstack-formulas/node-formula/commit/eddad9170a1bc1a5be7caee45599c2a84dff53a3))
+
 # [1.1.0](https://github.com/saltstack-formulas/node-formula/compare/v1.0.1...v1.1.0) (2021-10-26)
 
 
