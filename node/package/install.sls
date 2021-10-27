@@ -18,5 +18,5 @@ node-package-install-pkg-installed:
     - reload_modules: true
         {%- if salt['pillar.get']('node:pkg:version', '') %}
             {# use pkg:version for pinning #}
-    - version: {{ salt['pillar.get']('node:pkg::version', '') }}
+    - version: {{ salt['pillar.get']('node:pkg:version', '') }}
         {%- endif %}
