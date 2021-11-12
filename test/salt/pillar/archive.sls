@@ -2,12 +2,12 @@
 # vim: ft=yaml
 ---
 node:
-  version: 13.12.0
+  version: 16.13.0
   pkg:
     use_upstream_archive: true    # from NodeSource
     archive:
       uri: https://nodejs.org/dist
-      source_hash: 3e66b14bbeb9ea1ba129fae7c65374844f4ddaf1e48e2bc19b3b2570e158e362
+      source_hash: 9c00e5b6024cfcbc9105f9c58cf160762e78659a345d100c5bd80a7fb38c684f
 
   config:
     prefix: '/home/vagrant/.npm-packages'

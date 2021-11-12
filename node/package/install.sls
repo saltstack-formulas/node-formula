@@ -16,7 +16,6 @@ node-package-install-pkg-installed:
   pkg.installed:
     - name: {{ node.pkg.name }}
     - reload_modules: true
-        {%- if salt['pillar.get']('node:pkg:version', '') %}
-            {# use pkg:version for pinning #}
-    - version: {{ salt['pillar.get']('node:pkg:version', '') }}
+        {%- if node.pkg.version is defined %}
+    - version: {{ node.pkg.version }}
         {%- endif %}

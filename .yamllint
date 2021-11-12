@@ -18,6 +18,7 @@ ignore: |
   .git/
   node_modules/
   test/**/states/**/*.sls
+  test/salt/pillar/repo.sls
   .kitchen/
   kitchen.vagrant.yml
   node/osfamilymap.yaml
