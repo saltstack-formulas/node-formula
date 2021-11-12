@@ -1,5 +1,20 @@
 # Changelog
 
+# [2.0.0](https://github.com/saltstack-formulas/node-formula/compare/v1.1.1...v2.0.0) (2021-11-12)
+
+
+### Bug Fixes
+
+* **package:** use correct version parameter with packages ([6ce8259](https://github.com/saltstack-formulas/node-formula/commit/6ce8259a4ec8ba715cf4fb2923f7bfc3b5a02ebc))
+
+
+### BREAKING CHANGES
+
+* **package:** `node:pkg:version` needs to be specified as the
+full version number (ie, 16.13.0) instead of just the major number
+in order to be able to properly install using packages and pin the
+desired version.
+
 ## [1.1.1](https://github.com/saltstack-formulas/node-formula/compare/v1.1.0...v1.1.1) (2021-10-27)
 
 
