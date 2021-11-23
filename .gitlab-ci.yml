@@ -135,6 +135,7 @@ rubocop:
 # default-debian-9-tiamat-py3: {extends: '.test_instance'}
 # default-ubuntu-2004-tiamat-py3: {extends: '.test_instance'}
 # default-ubuntu-1804-tiamat-py3: {extends: '.test_instance'}
+# default-centos-stream8-tiamat-py3: {extends: '.test_instance_failure_permitted'}
 # default-centos-8-tiamat-py3: {extends: '.test_instance'}
 # default-centos-7-tiamat-py3: {extends: '.test_instance'}
 # default-amazonlinux-2-tiamat-py3: {extends: '.test_instance'}
@@ -162,6 +163,10 @@ repo-ubuntu-2004-master-py3: {extends: '.test_instance'}
 # archive-ubuntu-1804-master-py3: {extends: '.test_instance'}
 # source-ubuntu-1804-master-py3: {extends: '.test_instance'}
 repo-ubuntu-1804-master-py3: {extends: '.test_instance'}
+default-centos-stream8-master-py3: {extends: '.test_instance_failure_permitted'}
+# archive-centos-stream8-master-py3: {extends: '.test_instance_failure_permitted'}
+# source-centos-stream8-master-py3: {extends: '.test_instance_failure_permitted'}
+# repo-centos-stream8-master-py3: {extends: '.test_instance_failure_permitted'}
 default-centos-8-master-py3: {extends: '.test_instance'}
 # archive-centos-8-master-py3: {extends: '.test_instance'}
 # source-centos-8-master-py3: {extends: '.test_instance'}
@@ -186,10 +191,10 @@ default-opensuse-leap-152-master-py3: {extends: '.test_instance'}
 # archive-opensuse-leap-152-master-py3: {extends: '.test_instance'}
 # source-opensuse-leap-152-master-py3: {extends: '.test_instance'}
 # repo-opensuse-leap-152-master-py3: {extends: '.test_instance'}
-default-opensuse-tmbl-latest-master-py3: {extends: '.test_instance'}
-# archive-opensuse-tmbl-latest-master-py3: {extends: '.test_instance'}
-# source-opensuse-tmbl-latest-master-py3: {extends: '.test_instance'}
-# repo-opensuse-tmbl-latest-master-py3: {extends: '.test_instance'}
+default-opensuse-tmbl-latest-master-py3: {extends: '.test_instance_failure_permitted'}
+# archive-opensuse-tmbl-latest-master-py3: {extends: '.test_instance_failure_permitted'}
+# source-opensuse-tmbl-latest-master-py3: {extends: '.test_instance_failure_permitted'}
+# repo-opensuse-tmbl-latest-master-py3: {extends: '.test_instance_failure_permitted'}
 # default-amazonlinux-2-master-py3: {extends: '.test_instance'}
 archive-amazonlinux-2-master-py3: {extends: '.test_instance'}
 # source-amazonlinux-2-master-py3: {extends: '.test_instance'}
@@ -222,18 +227,40 @@ default-rockylinux-8-master-py3: {extends: '.test_instance'}
 # archive-rockylinux-8-master-py3: {extends: '.test_instance'}
 # source-rockylinux-8-master-py3: {extends: '.test_instance'}
 # repo-rockylinux-8-master-py3: {extends: '.test_instance'}
+# default-debian-11-3004-0-py3: {extends: '.test_instance'}
+# default-debian-10-3004-0-py3: {extends: '.test_instance'}
+# default-debian-9-3004-0-py3: {extends: '.test_instance'}
+# default-ubuntu-2004-3004-0-py3: {extends: '.test_instance'}
+# default-ubuntu-1804-3004-0-py3: {extends: '.test_instance'}
+# default-centos-stream8-3004-0-py3: {extends: '.test_instance_failure_permitted'}
+# default-centos-8-3004-0-py3: {extends: '.test_instance'}
+# default-centos-7-3004-0-py3: {extends: '.test_instance'}
+# default-fedora-34-3004-0-py3: {extends: '.test_instance'}
+# default-fedora-33-3004-0-py3: {extends: '.test_instance'}
+# default-opensuse-leap-153-3004-0-py3: {extends: '.test_instance'}
+# default-opensuse-leap-152-3004-0-py3: {extends: '.test_instance'}
+# default-opensuse-tmbl-latest-3004-0-py3: {extends: '.test_instance_failure_permitted'}
+# default-amazonlinux-2-3004-0-py3: {extends: '.test_instance'}
+# default-oraclelinux-8-3004-0-py3: {extends: '.test_instance'}
+# default-oraclelinux-7-3004-0-py3: {extends: '.test_instance'}
+# default-arch-base-latest-3004-0-py3: {extends: '.test_instance'}
+# default-gentoo-stage3-latest-3004-0-py3: {extends: '.test_instance'}
+# default-gentoo-stage3-systemd-3004-0-py3: {extends: '.test_instance'}
+# default-almalinux-8-3004-0-py3: {extends: '.test_instance'}
+# default-rockylinux-8-3004-0-py3: {extends: '.test_instance'}
 # default-debian-11-3003-3-py3: {extends: '.test_instance'}
 # default-debian-10-3003-3-py3: {extends: '.test_instance'}
 # default-debian-9-3003-3-py3: {extends: '.test_instance'}
 # default-ubuntu-2004-3003-3-py3: {extends: '.test_instance'}
 # default-ubuntu-1804-3003-3-py3: {extends: '.test_instance'}
+# default-centos-stream8-3003-3-py3: {extends: '.test_instance_failure_permitted'}
 # default-centos-8-3003-3-py3: {extends: '.test_instance'}
 # default-centos-7-3003-3-py3: {extends: '.test_instance'}
 # default-fedora-34-3003-3-py3: {extends: '.test_instance'}
 # default-fedora-33-3003-3-py3: {extends: '.test_instance'}
 # default-opensuse-leap-153-3003-3-py3: {extends: '.test_instance'}
 # default-opensuse-leap-152-3003-3-py3: {extends: '.test_instance'}
-# default-opensuse-tmbl-latest-3003-3-py3: {extends: '.test_instance'}
+# default-opensuse-tmbl-latest-3003-3-py3: {extends: '.test_instance_failure_permitted'}
 # default-amazonlinux-2-3003-3-py3: {extends: '.test_instance'}
 # default-oraclelinux-8-3003-3-py3: {extends: '.test_instance'}
 # default-oraclelinux-7-3003-3-py3: {extends: '.test_instance'}
@@ -252,7 +279,7 @@ default-rockylinux-8-master-py3: {extends: '.test_instance'}
 # default-fedora-33-3002-7-py3: {extends: '.test_instance'}
 # default-opensuse-leap-153-3002-7-py3: {extends: '.test_instance'}
 # default-opensuse-leap-152-3002-7-py3: {extends: '.test_instance'}
-# default-opensuse-tmbl-latest-3002-7-py3: {extends: '.test_instance'}
+# default-opensuse-tmbl-latest-3002-7-py3: {extends: '.test_instance_failure_permitted'}
 # default-amazonlinux-2-3002-7-py3: {extends: '.test_instance'}
 # default-oraclelinux-8-3002-7-py3: {extends: '.test_instance'}
 # default-oraclelinux-7-3002-7-py3: {extends: '.test_instance'}
@@ -269,7 +296,7 @@ default-rockylinux-8-master-py3: {extends: '.test_instance'}
 # default-fedora-33-3001-8-py3: {extends: '.test_instance'}
 # default-opensuse-leap-153-3001-8-py3: {extends: '.test_instance'}
 # default-opensuse-leap-152-3001-8-py3: {extends: '.test_instance'}
-# default-opensuse-tmbl-latest-3001-8-py3: {extends: '.test_instance'}
+# default-opensuse-tmbl-latest-3001-8-py3: {extends: '.test_instance_failure_permitted'}
 # default-amazonlinux-2-3001-8-py3: {extends: '.test_instance'}
 # default-oraclelinux-8-3001-8-py3: {extends: '.test_instance'}
 # default-oraclelinux-7-3001-8-py3: {extends: '.test_instance'}
