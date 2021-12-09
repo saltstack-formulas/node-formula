@@ -19,7 +19,7 @@
 
 Debian:
   pkg:
-    version: 16.13.0-deb-1nodesource1
+    version: 16.13.1-deb-1nodesource1
     deps:
       - pkg-config
       - build-essential
