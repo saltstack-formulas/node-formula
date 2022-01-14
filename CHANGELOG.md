@@ -1,5 +1,18 @@
 # Changelog
 
+# [2.1.0](https://github.com/saltstack-formulas/node-formula/compare/v2.0.0...v2.1.0) (2022-01-14)
+
+
+### Continuous Integration
+
+* **kitchen+ci:** update with `3004` pre-salted images/boxes [skip ci] ([29a797a](https://github.com/saltstack-formulas/node-formula/commit/29a797a8d609a87442c757f876b16f522a45b723))
+
+
+### Features
+
+* **repo:** update installation `version` [skip ci] ([4902faf](https://github.com/saltstack-formulas/node-formula/commit/4902faff4402034e226dca966f8fd94bb30c7c39))
+* **repo:** update installation version ([cad52df](https://github.com/saltstack-formulas/node-formula/commit/cad52dfa08aa54f5bfd51badfdb225c874d1e532))
+
 # [2.0.0](https://github.com/saltstack-formulas/node-formula/compare/v1.1.1...v2.0.0) (2021-11-12)
 
 
