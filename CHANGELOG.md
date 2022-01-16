@@ -1,5 +1,17 @@
 # Changelog
 
+# [2.2.0](https://github.com/saltstack-formulas/node-formula/compare/v2.1.0...v2.2.0) (2022-01-16)
+
+
+### Code Refactoring
+
+* add `osfingermap` ([e5f9399](https://github.com/saltstack-formulas/node-formula/commit/e5f93992935f2179d2aa857c75277a59766e3f5c))
+
+
+### Features
+
+* **tumbleweed:** update version via. new `oscodenamemap` ([3ce9ef2](https://github.com/saltstack-formulas/node-formula/commit/3ce9ef2c6cb694e6f2da6f044ffc47a81145ad93))
+
 # [2.1.0](https://github.com/saltstack-formulas/node-formula/compare/v2.0.0...v2.1.0) (2022-01-14)
 
 
