@@ -7,7 +7,12 @@ control 'nodejs package' do
   package_name =
     case platform[:family]
     when 'suse'
-      'nodejs14'
+      case system.platform[:finger]
+      when 'opensuse-tumbleweed'
+        'nodejs16'
+      else
+        'nodejs14'
+      end
     else
       'nodejs'
     end

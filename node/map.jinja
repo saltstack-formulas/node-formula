@@ -7,6 +7,7 @@
 {%- import_yaml tplroot ~ "/osfamilymap.yaml" as osfamilymap with context %}
 {%- import_yaml tplroot ~ "/osmap.yaml" as osmap with context %}
 {%- import_yaml tplroot ~ "/osfingermap.yaml" as osfingermap with context %}
+{%- import_yaml tplroot ~ "/oscodenamemap.yaml" as oscodenamemap with context %}
 
 {%- set _config = salt['config.get'](tplroot, default={}) %}
 {%- set defaults = salt['grains.filter_by'](
@@ -16,7 +17,9 @@
         merge=salt['grains.filter_by']( osfamilymap, grain='os_family',
           merge=salt['grains.filter_by']( osmap, grain='os',
             merge=salt['grains.filter_by']( osfingermap, grain='osfinger',
-              merge=salt['grains.filter_by']( _config, default='lookup'
+              merge=salt['grains.filter_by']( oscodenamemap, grain='oscodename',
+                merge=salt['grains.filter_by']( _config, default='lookup'
+                )
               )
             )
           )
