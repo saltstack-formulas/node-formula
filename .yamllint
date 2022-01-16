@@ -21,7 +21,6 @@ ignore: |
   .kitchen/
   kitchen.vagrant.yml
   node/osfamilymap.yaml
-  test/salt/pillar/repo.sls
 
 yaml-files:
   # Default settings
