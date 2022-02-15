@@ -3,7 +3,7 @@
 ---
 Debian-9:
   pkg:
-    version: 16.13.2-1nodesource1
+    version: 16.14.0-1nodesource1
 Ubuntu-18.04:
   pkg:
-    version: 16.13.2-1nodesource1
+    version: 16.14.0-1nodesource1
