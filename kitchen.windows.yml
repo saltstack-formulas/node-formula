@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+driver:
+  name: proxy
+  host: localhost
+  reset_command: "exit 0"
+  port: 5985
+  username: kitchen
+  password: Pass@word1
+
+provisioner:
+  salt_install: bootstrap
+  salt_bootstrap_options: -pythonVersion 3
+  # yamllint disable rule:line-length
+  init_environment: |
+    salt-call --local state.single file.managed `
+      C:\Users\kitchen\AppData\Local\Temp\kitchen\srv\salt\win\repo-ng\node.js.sls `
+      source=https://github.com/saltstack/salt-winrepo-ng/raw/master/node.js.sls `
+      skip_verify=True makedirs=True
+  # yamllint enable rule:line-length
+
+platforms:
+  - name: windows-2022-latest-py3
+  - name: windows-2019-latest-py3
