@@ -4,7 +4,8 @@
 node:
   version: 16.13.0
   config:
-    prefix: '/home/vagrant/.npm-packages'
+    # yamllint disable-line rule:line-length
+    prefix: '{{ "${APPDATA}\\npm" if grains.os == "Windows" else "/home/vagrant/.npm-packages" }}'
   environ:
     a: b
   pkg:

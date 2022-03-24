@@ -12,6 +12,10 @@ root_group =
 control 'node configuration environment' do
   title 'should match desired lines'
 
+  only_if('Environment file not managed on Windows') do
+    !%w[windows].include?(system.platform[:name])
+  end
+
   describe file('/etc/default/node.sh') do
     it { should be_file }
     it { should be_owned_by 'root' }

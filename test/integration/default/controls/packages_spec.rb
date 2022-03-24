@@ -20,6 +20,8 @@ control 'nodejs package' do
       else
         'nodejs'
       end
+    when 'windows'
+      'node.js'
     else
       'nodejs'
     end

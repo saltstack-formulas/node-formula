@@ -5,7 +5,7 @@
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import node with context %}
 
-    {%- if grains.os_family not in ('Windows', 'MacOS',) %}
+    {%- if grains.os_family not in ('MacOS',) %}
            {%- set p = node.pkg %}
 
 include:
