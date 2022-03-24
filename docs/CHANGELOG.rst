@@ -2,6 +2,73 @@
 Changelog
 =========
 
+`2.3.0 <https://github.com/saltstack-formulas/node-formula/compare/v2.2.0...v2.3.0>`_ (2022-03-24)
+------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* enable Vagrant-based testing using GitHub Actions (\ `0d1bd4a <https://github.com/saltstack-formulas/node-formula/commit/0d1bd4a31185bce4cc6b5ebeeb198dfb5f9d7874>`_\ )
+* update linters to latest versions [skip ci] (\ `ed63546 <https://github.com/saltstack-formulas/node-formula/commit/ed63546091e9d140d264f8bc88842134a2fb0dac>`_\ )
+* **gemfile:** allow rubygems proxy to be provided as an env var [skip ci] (\ `478c2c7 <https://github.com/saltstack-formulas/node-formula/commit/478c2c76584777701df8028f3bb35d75b577bcd1>`_\ )
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] (\ `7e237d1 <https://github.com/saltstack-formulas/node-formula/commit/7e237d1e90327c8822b311205ddc14964df4ceeb>`_\ )
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **readme:** add ``Testing with Vagrant`` section (\ `05c942e <https://github.com/saltstack-formulas/node-formula/commit/05c942ecb05f3a918fe762a7164cb2d9f7118cc7>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **freebsd:** add support to work with the ``default`` suite (\ `0f50475 <https://github.com/saltstack-formulas/node-formula/commit/0f50475063856a540f72217cb4bb2bad3501da0e>`_\ )
+* **openbsd:** add support to work with the ``default`` suite (\ `1d97949 <https://github.com/saltstack-formulas/node-formula/commit/1d97949be7532fbbafd040c334846ac869a1be4b>`_\ )
+* **os*map:** update version installed on Debian/Ubuntu [skip ci] (\ `d4407fa <https://github.com/saltstack-formulas/node-formula/commit/d4407fa3e263eb8fced94657a61da2db7d902feb>`_\ )
+* **os*map:** update version installed on Debian/Ubuntu [skip ci] (\ `e806dcb <https://github.com/saltstack-formulas/node-formula/commit/e806dcbd4bee7fd085727383475ee47dc870ed95>`_\ )
+* **os*map:** update version installed on Debian/Ubuntu [skip ci] (\ `2976bf2 <https://github.com/saltstack-formulas/node-formula/commit/2976bf2c7381fb3b5187caa4673d4d5d2db0f4b8>`_\ )
+* **osfingermap:** use last working version for Fedora 34 [skip ci] (\ `c38f422 <https://github.com/saltstack-formulas/node-formula/commit/c38f4225b921d0a3d0e7291b4a3e86ab73ccc9c1>`_\ )
+* **windows:** add support to work with the ``default`` suite (\ `f1066d6 <https://github.com/saltstack-formulas/node-formula/commit/f1066d6758552cee9b240fa33bb2cdb32e0a9d15>`_\ )
+
+Tests
+^^^^^
+
+
+* **system:** add ``build_platform_codename`` [skip ci] (\ `de02abe <https://github.com/saltstack-formulas/node-formula/commit/de02abe07864c6e744283be2aa7ef818297d13af>`_\ )
+
+`2.2.0 <https://github.com/saltstack-formulas/node-formula/compare/v2.1.0...v2.2.0>`_ (2022-01-16)
+------------------------------------------------------------------------------------------------------
+
+Code Refactoring
+^^^^^^^^^^^^^^^^
+
+
+* add ``osfingermap`` (\ `e5f9399 <https://github.com/saltstack-formulas/node-formula/commit/e5f93992935f2179d2aa857c75277a59766e3f5c>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **tumbleweed:** update version via. new ``oscodenamemap`` (\ `3ce9ef2 <https://github.com/saltstack-formulas/node-formula/commit/3ce9ef2c6cb694e6f2da6f044ffc47a81145ad93>`_\ )
+
+`2.1.0 <https://github.com/saltstack-formulas/node-formula/compare/v2.0.0...v2.1.0>`_ (2022-01-14)
+------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen+ci:** update with ``3004`` pre-salted images/boxes [skip ci] (\ `29a797a <https://github.com/saltstack-formulas/node-formula/commit/29a797a8d609a87442c757f876b16f522a45b723>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **repo:** update installation ``version`` [skip ci] (\ `4902faf <https://github.com/saltstack-formulas/node-formula/commit/4902faff4402034e226dca966f8fd94bb30c7c39>`_\ )
+* **repo:** update installation version (\ `cad52df <https://github.com/saltstack-formulas/node-formula/commit/cad52dfa08aa54f5bfd51badfdb225c874d1e532>`_\ )
+
 `2.0.0 <https://github.com/saltstack-formulas/node-formula/compare/v1.1.1...v2.0.0>`_ (2021-11-12)
 ------------------------------------------------------------------------------------------------------
 
