@@ -66,6 +66,7 @@ Arch: {}
 Alpine: {}
 
 FreeBSD:
+  rootgroup: wheel
   pkg:
     name: node
     source:
@@ -73,6 +74,7 @@ FreeBSD:
       source_hash: 9c00e5b6024cfcbc9105f9c58cf160762e78659a345d100c5bd80a7fb38c684f
 
 OpenBSD:
+  rootgroup: wheel
   pkg:
     name: node
     source:
@@ -82,7 +84,11 @@ OpenBSD:
 Solaris: {}
 
 Windows:
+  config_file: C:\Program Files\nodejs\node_modules\npm\npmrc
+  config:
+    prefix: '${APPDATA}\\npm'
   pkg:
+    name: node.js
     source:
       # win-x64/node.exe
       source_hash: 7fca04f83b0e2169e41b2e1845e8da0f07d66cf9c3a1b4150767bf3ffddccf62

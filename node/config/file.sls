@@ -24,9 +24,11 @@ node-config-npmrc-file-managed-config_file:
                               lookup='node-config-file-file-managed-config_file'
                  )
               }}
+    {%- if grains.os_family != 'Windows' %}
     - mode: 640
     - user: {{ node.rootuser }}
     - group: {{ node.rootgroup }}
+    {%- endif %}
     - makedirs: True
     - template: jinja
     - context:

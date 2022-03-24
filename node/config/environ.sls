@@ -6,7 +6,7 @@
 {%- from tplroot ~ "/map.jinja" import node with context %}
 {%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
 
-{%- if 'environ' in node and node.environ %}
+{%- if 'environ' in node and node.environ and grains.os_family != 'Windows' %}
 
     {%- if node.pkg.use_upstream_source %}
         {%- set sls_package_install = tplroot ~ '.source.install' %}
