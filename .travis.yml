@@ -123,6 +123,10 @@ jobs:
     # - env: INSTANCE=archive-centos-7-master-py3
     # - env: INSTANCE=source-centos-7-master-py3
     # - env: INSTANCE=repo-centos-7-master-py3
+    - env: INSTANCE=default-fedora-36-master-py3
+    # - env: INSTANCE=archive-fedora-36-master-py3
+    # - env: INSTANCE=source-fedora-36-master-py3
+    # - env: INSTANCE=repo-fedora-36-master-py3
     - env: INSTANCE=default-fedora-35-master-py3
     # - env: INSTANCE=archive-fedora-35-master-py3
     # - env: INSTANCE=source-fedora-35-master-py3
@@ -178,6 +182,7 @@ jobs:
     # - env: INSTANCE=default-ubuntu-1804-3004-1-py3
     # - env: INSTANCE=default-centos-stream8-3004-1-py3
     # - env: INSTANCE=default-centos-7-3004-1-py3
+    # - env: INSTANCE=default-fedora-36-3004-1-py3
     # - env: INSTANCE=default-fedora-35-3004-1-py3
     # - env: INSTANCE=default-fedora-34-3004-1-py3
     # - env: INSTANCE=default-amazonlinux-2-3004-1-py3
