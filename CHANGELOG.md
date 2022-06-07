@@ -1,5 +1,24 @@
 # Changelog
 
+# [2.4.0](https://github.com/saltstack-formulas/node-formula/compare/v2.3.0...v2.4.0) (2022-06-07)
+
+
+### Continuous Integration
+
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] ([3c2ee6e](https://github.com/saltstack-formulas/node-formula/commit/3c2ee6eb11c81903961973814938ed1d6f649698))
+* **vagrant:** use `linked_clone` at all times (inc. CI) [skip ci] ([0db341d](https://github.com/saltstack-formulas/node-formula/commit/0db341da2589d73cccd25776471ca35cfa485731))
+
+
+### Features
+
+* **os*map:** update version installed on Debian/Ubuntu ([b0c4bd9](https://github.com/saltstack-formulas/node-formula/commit/b0c4bd9041b5e3826412804c16e11f8a99287807))
+* **os*map:** update version installed on Debian/Ubuntu [skip ci] ([f204851](https://github.com/saltstack-formulas/node-formula/commit/f2048513e84fb3eb445668303386c2ffbcda3c89))
+
+
+### Tests
+
+* **system.rb:** add support for `mac_os_x` [skip ci] ([74d8a56](https://github.com/saltstack-formulas/node-formula/commit/74d8a56bf4edc4438d067fd3881591e808fa5e70))
+
 # [2.3.0](https://github.com/saltstack-formulas/node-formula/compare/v2.2.0...v2.3.0) (2022-03-24)
 
 
