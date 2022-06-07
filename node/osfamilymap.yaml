@@ -20,7 +20,7 @@
 Debian:
   pkg:
     # Check latest version: https://deb.nodesource.com/node_16.x/pool/main/n/nodejs/
-    version: 16.15.0-deb-1nodesource1
+    version: 16.15.1-deb-1nodesource1
     deps:
       - pkg-config
       - build-essential
