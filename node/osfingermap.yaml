@@ -3,10 +3,10 @@
 ---
 Debian-9:
   pkg:
-    version: 16.15.1-1nodesource1
+    version: 16.16.0-1nodesource1
 Ubuntu-18.04:
   pkg:
-    version: 16.15.1-1nodesource1
+    version: 16.16.0-1nodesource1
 Fedora-34:
   pkg:
     version: 1:14.16.0-4.fc34
