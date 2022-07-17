@@ -1,5 +1,17 @@
 # Changelog
 
+# [2.5.0](https://github.com/saltstack-formulas/node-formula/compare/v2.4.0...v2.5.0) (2022-07-17)
+
+
+### Continuous Integration
+
+* update `pre-commit` configuration inc. for pre-commit.ci [skip ci] ([cd18cec](https://github.com/saltstack-formulas/node-formula/commit/cd18cec051362a843365dff391061958baccce17))
+
+
+### Features
+
+* **os*map:** update version installed on Debian/Ubuntu ([1e82b29](https://github.com/saltstack-formulas/node-formula/commit/1e82b2987e0794e9d580ff91647c4987717edbae))
+
 # [2.4.0](https://github.com/saltstack-formulas/node-formula/compare/v2.3.0...v2.4.0) (2022-06-07)
 
 
