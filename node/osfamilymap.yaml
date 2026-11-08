@@ -10,10 +10,10 @@
 # you will need to provide at least an empty dict in this file, e.g.
 # osfamilymap: {}
 ---
-{%- if grains.os == 'MacOS' %}
-    {%- set macos_rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
-    {%- set macos_rootgroup = salt['cmd.run']("stat -f '%Sg' /dev/console") %}
-{%- endif %}
+# {%- if grains.os == 'MacOS' %}
+#     {%- set macos_rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
+#     {%- set macos_rootgroup = salt['cmd.run']("stat -f '%Sg' /dev/console") %}
+# {%- endif %}
 
 # Source hashes taken from https://nodejs.org/dist/v node.version /SHASUMS256.txt
 
@@ -29,16 +29,16 @@ Debian:
       - g++
       - libssl-dev
       - python3-distutils
-            {%- if 'oscodename' in grains %}
+      # {%- if 'oscodename' in grains %}
     repo:
       humanname: NodeSource Node.js Repository
       url: https://deb.nodesource.com
-      dist: {{ grains['oscodename'] }}
+      dist: '{{ grains["oscodename"] }}'
       comps: "main"
       file: /etc/apt/sources.list.d/nodesource.list
       key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
       keyserver: keyserver.ubuntu.com
-            {%- endif %}
+      # {%- endif %}
 
 RedHat:
   pkg:
@@ -95,8 +95,8 @@ Windows:
       archive_suffix: exe
 
 MacOS:
-  rootuser: {{ macos_rootuser | d('') }}
-  rootgroup: {{ macos_rootgroup | d('') }}
+  rootuser: '{{ macos_rootuser | d('') }}'
+  rootgroup: '{{ macos_rootgroup | d('') }}'
   pkg:
     name: node    # homebrew; macports: nodejs7
     source:
