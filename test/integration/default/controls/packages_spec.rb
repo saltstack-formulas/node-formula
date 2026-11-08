@@ -6,13 +6,8 @@ control 'nodejs package' do
   # Overide by platform
   package_name =
     case platform[:family]
-    when 'suse'
-      case system.platform[:finger]
-      when 'opensuse-tumbleweed'
-        'nodejs16'
-      else
-        'nodejs14'
-      end
+    when 'fedora', 'suse'
+      'nodejs24'
     when 'bsd'
       case platform[:name]
       when 'freebsd'

@@ -254,9 +254,7 @@ suites:
         top.sls:
           base:
             '*':
-              - node
-      pillars_from_files:
-        node.sls: test/salt/pillar/default.sls
+              - default
     verifier:
       inspec_tests:
         - path: test/integration/default
@@ -271,13 +269,12 @@ suites:
         top.sls:
           base:
             '*':
-              - node
-      pillars_from_files:
-        node.sls: test/salt/pillar/archive.sls
+              - archive
     verifier:
       inspec_tests:
         - path: test/integration/archive
   - name: source
+    includes: MANUAL
     provisioner:
       state_top:
         base:
@@ -288,13 +285,13 @@ suites:
         top.sls:
           base:
             '*':
-              - node
-      pillars_from_files:
-        node.sls: test/salt/pillar/source.sls
+              - source
     verifier:
       inspec_tests:
         - path: test/integration/source
   - name: repo
+    includes:
+      - /^debian-/
     provisioner:
       state_top:
         base:
@@ -305,9 +302,7 @@ suites:
         top.sls:
           base:
             '*':
-              - node
-      pillars_from_files:
-        node.sls: test/salt/pillar/repo.sls
+              - repo
     verifier:
       inspec_tests:
         - path: test/integration/default
