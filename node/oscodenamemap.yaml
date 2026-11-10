@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 ---
-openSUSE Tumbleweed:
-  pkg:
-    name: nodejs16
+{}

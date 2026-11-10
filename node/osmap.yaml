@@ -22,3 +22,7 @@ Manjaro: {}
 
 # os_family: Solaris
 SmartOS: {}
+
+Fedora:
+  pkg:
+    name: nodejs24

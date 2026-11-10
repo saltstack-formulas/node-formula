@@ -52,7 +52,7 @@ RedHat:
 
 Suse:
   pkg:
-    name: nodejs14
+    name: nodejs24
 
 Gentoo:
   pkg:
