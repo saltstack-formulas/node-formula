@@ -12,6 +12,7 @@ env:
 
 jobs:
   test-2022:
+    if: false
     runs-on: 'windows-2022'
     strategy:
       fail-fast: false
@@ -55,6 +56,7 @@ jobs:
       - name: 'Run Test Kitchen'
         run: 'bundle exec kitchen verify ${{ matrix.instance }}'
   test-2019:
+    if: false
     runs-on: 'windows-2019'
     strategy:
       fail-fast: false

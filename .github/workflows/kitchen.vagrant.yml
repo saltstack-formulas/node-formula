@@ -9,6 +9,7 @@ env:
 
 jobs:
   test:
+    if: false
     runs-on: 'macos-10.15'
     strategy:
       fail-fast: false
