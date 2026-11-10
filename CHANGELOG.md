@@ -1,5 +1,30 @@
 # Changelog
 
+## [3.0.0](https://github.com/saltstack-formulas/node-formula/compare/v2.5.0...v3.0.0) (2026-11-10)
+
+### ⚠ BREAKING CHANGES
+
+* remove default versions
+
+### Bug Fixes
+
+* remove default versions ([6537068](https://github.com/saltstack-formulas/node-formula/commit/6537068c9ca9649836311d59696280193528cbeb))
+* update repo config for Debian ([6cfe4e6](https://github.com/saltstack-formulas/node-formula/commit/6cfe4e6b076677b8d00f6ebbb2234682e2aa2278))
+* update SUSE and Fedora package names ([f176d06](https://github.com/saltstack-formulas/node-formula/commit/f176d0674be5b840b0fc2e5e903ecd009810ff12))
+
+### Testing
+
+* update tested platforms and suites ([2a3021b](https://github.com/saltstack-formulas/node-formula/commit/2a3021b972de981261fb679a75034d24e7e6fa88))
+
+### Continuous Integration
+
+* **workflows:** disable Windows and Vagrant testing ([6661b63](https://github.com/saltstack-formulas/node-formula/commit/6661b6332ffa5a656ef2815466ae84ce3d3fb405))
+
+### Maintenance
+
+* **copier:** apply template https://github.com/dafyddjcopier-ssf-ci at version v2.12.1 ([7c80996](https://github.com/saltstack-formulas/node-formula/commit/7c80996118547adc4c2382f8471c9ecc0b54b655))
+* **gemfile.lock:** update to latest gem versions (2022-W28) [skip ci] ([4302eb4](https://github.com/saltstack-formulas/node-formula/commit/4302eb4305aeb76f64ea48d905b46121aaee475a))
+
 # [2.5.0](https://github.com/saltstack-formulas/node-formula/compare/v2.4.0...v2.5.0) (2022-07-17)
 
 
