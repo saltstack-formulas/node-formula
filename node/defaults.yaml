@@ -2,7 +2,7 @@
 # vim: ft=yaml
 ---
 node:
-  version: 16.13.0
+  version: null
   config_file: /etc/npmrc
   config: {}
   environ_file: /etc/default/node.sh

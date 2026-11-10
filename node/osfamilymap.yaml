@@ -10,17 +10,15 @@
 # you will need to provide at least an empty dict in this file, e.g.
 # osfamilymap: {}
 ---
-{%- if grains.os == 'MacOS' %}
-    {%- set macos_rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
-    {%- set macos_rootgroup = salt['cmd.run']("stat -f '%Sg' /dev/console") %}
-{%- endif %}
+# {%- if grains.os == 'MacOS' %}
+#     {%- set macos_rootuser = salt['cmd.run']("stat -f '%Su' /dev/console") %}
+#     {%- set macos_rootgroup = salt['cmd.run']("stat -f '%Sg' /dev/console") %}
+# {%- endif %}
 
 # Source hashes taken from https://nodejs.org/dist/v node.version /SHASUMS256.txt
 
 Debian:
   pkg:
-    # Check latest version: https://deb.nodesource.com/node_16.x/pool/main/n/nodejs/
-    version: 16.16.0-deb-1nodesource1
     deps:
       - pkg-config
       - build-essential
@@ -29,16 +27,15 @@ Debian:
       - g++
       - libssl-dev
       - python3-distutils
-            {%- if 'oscodename' in grains %}
     repo:
       humanname: NodeSource Node.js Repository
       url: https://deb.nodesource.com
-      dist: {{ grains['oscodename'] }}
+      dist: nodistro
       comps: "main"
       file: /etc/apt/sources.list.d/nodesource.list
-      key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      key_url: salt://node/files/nodesource.gpg
+      aptkey: false
       keyserver: keyserver.ubuntu.com
-            {%- endif %}
 
 RedHat:
   pkg:
@@ -55,7 +52,7 @@ RedHat:
 
 Suse:
   pkg:
-    name: nodejs14
+    name: nodejs24
 
 Gentoo:
   pkg:
@@ -95,8 +92,8 @@ Windows:
       archive_suffix: exe
 
 MacOS:
-  rootuser: {{ macos_rootuser | d('') }}
-  rootgroup: {{ macos_rootgroup | d('') }}
+  rootuser: '{{ macos_rootuser | d('') }}'
+  rootgroup: '{{ macos_rootgroup | d('') }}'
   pkg:
     name: node    # homebrew; macports: nodejs7
     source:

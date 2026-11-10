@@ -2,7 +2,6 @@
 # vim: ft=yaml
 ---
 node:
-  version: 16.13.0
   config:
     # yamllint disable-line rule:line-length
     prefix: '{{ "${APPDATA}\\npm" if grains.os == "Windows" else "/home/vagrant/.npm-packages" }}'

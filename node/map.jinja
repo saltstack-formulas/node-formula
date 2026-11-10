@@ -42,7 +42,7 @@
 {%- endif %}
 {%- if node.pkg.use_upstream_repo -%}
     {%- set repo_version = node.version.split('.')[0] | default('') %}
-    {%- set full_repo_name = 'deb %s/node_%s.x %s'|format(node.pkg.repo.url, repo_version, node.pkg.repo.dist) -%}
+    {%- set full_repo_name = 'deb [signed-by=/etc/apt/keyrings/nodesource.gpg] %s/node_%s.x %s'|format(node.pkg.repo.url, repo_version, node.pkg.repo.dist) -%}
     {%- do node.pkg.repo.update({
            'name': full_repo_name}) -%}
 {%- endif -%}
