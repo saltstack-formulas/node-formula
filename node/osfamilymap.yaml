@@ -27,16 +27,15 @@ Debian:
       - g++
       - libssl-dev
       - python3-distutils
-      # {%- if 'oscodename' in grains %}
     repo:
       humanname: NodeSource Node.js Repository
       url: https://deb.nodesource.com
-      dist: '{{ grains["oscodename"] }}'
+      dist: nodistro
       comps: "main"
       file: /etc/apt/sources.list.d/nodesource.list
-      key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+      key_url: salt://node/files/nodesource.gpg
+      aptkey: false
       keyserver: keyserver.ubuntu.com
-      # {%- endif %}
 
 RedHat:
   pkg:
